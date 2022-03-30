@@ -10,6 +10,7 @@ import { locale as german } from 'app/main/tables/datatables/i18n/de';
 import { locale as english } from 'app/main/tables/datatables/i18n/en';
 import { locale as french } from 'app/main/tables/datatables/i18n/fr';
 import { locale as portuguese } from 'app/main/tables/datatables/i18n/pt';
+import { locale as spanish } from 'app/main/tables/datatables/i18n/es';
 
 import * as snippet from 'app/main/tables/datatables/datatables.snippetcode';
 
@@ -66,7 +67,7 @@ export class DatatablesComponent implements OnInit {
   inlineEditingUpdateName(event, cell, rowIndex) {
     this.editingName[rowIndex + '-' + cell] = false;
     this.rows[rowIndex][cell] = event.target.value;
-    this.rows = [...this.rows];
+    //this.rows = [...this.rows];
   }
 
   /**
@@ -79,7 +80,7 @@ export class DatatablesComponent implements OnInit {
   inlineEditingUpdateAge(event, cell, rowIndex) {
     this.editingAge[rowIndex + '-' + cell] = false;
     this.rows[rowIndex][cell] = event.target.value;
-    this.rows = [...this.rows];
+    //this.rows = [...this.rows];
   }
 
   /**
@@ -175,7 +176,7 @@ export class DatatablesComponent implements OnInit {
    */
   constructor(private _datatablesService: DatatablesService, private _coreTranslationService: CoreTranslationService) {
     this._unsubscribeAll = new Subject();
-    this._coreTranslationService.translate(english, french, german, portuguese);
+    this._coreTranslationService.translate(english, spanish, french, german, portuguese);
   }
 
   // Lifecycle Hooks

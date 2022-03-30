@@ -9,6 +9,7 @@ import { AuthenticationService } from 'app/auth/service';
 import { DashboardService } from 'app/main/dashboard/dashboard.service';
 
 import { locale as english } from 'app/main/dashboard/i18n/en';
+import { locale as spanish } from 'app/main/dashboard/i18n/es';
 import { locale as french } from 'app/main/dashboard/i18n/fr';
 import { locale as german } from 'app/main/dashboard/i18n/de';
 import { locale as portuguese } from 'app/main/dashboard/i18n/pt';
@@ -79,7 +80,7 @@ export class EcommerceComponent implements OnInit {
     this.isAdmin = this._authenticationService.isAdmin;
     this.isClient = this._authenticationService.isClient;
 
-    this._coreTranslationService.translate(english, french, german, portuguese);
+    this._coreTranslationService.translate(english, spanish, french, german, portuguese);
     // Statistics Bar Chart
     this.statisticsBar = {
       chart: {

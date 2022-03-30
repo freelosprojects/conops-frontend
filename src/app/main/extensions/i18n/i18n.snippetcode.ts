@@ -48,6 +48,7 @@ export const snippetCodei18n: snippetCode = {
   ) {
     this._coreTranslationService.translate(
       english,
+      spanish,
       french,
       german,
       portuguese
