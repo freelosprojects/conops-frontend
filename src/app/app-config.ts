@@ -19,7 +19,7 @@ export const coreConfig: CoreConfig = {
     appName     : 'CO',                                         // App Name
     appTitle    : 'Control de Operaciones',                     // App Title
     appLogoImage: 'assets/images/logo/logo.svg',                // App Logo
-    appLanguage : 'en',                                         // App Default Language (en, fr, de, pt etc..)
+    appLanguage : 'en',                                         // App Default Language (en, fr, de, pt, es, etc..)
   },
   layout: {
     skin  : 'default',                        // default, dark, bordered, semi-dark
