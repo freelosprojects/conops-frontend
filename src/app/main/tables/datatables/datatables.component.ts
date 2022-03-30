@@ -67,7 +67,7 @@ export class DatatablesComponent implements OnInit {
   inlineEditingUpdateName(event, cell, rowIndex) {
     this.editingName[rowIndex + '-' + cell] = false;
     this.rows[rowIndex][cell] = event.target.value;
-    //this.rows = [...this.rows];
+    this.rows = [...this.rows];
   }
 
   /**
@@ -80,7 +80,7 @@ export class DatatablesComponent implements OnInit {
   inlineEditingUpdateAge(event, cell, rowIndex) {
     this.editingAge[rowIndex + '-' + cell] = false;
     this.rows[rowIndex][cell] = event.target.value;
-    //this.rows = [...this.rows];
+    this.rows = [...this.rows];
   }
 
   /**
