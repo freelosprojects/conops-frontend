@@ -37,6 +37,10 @@ export class I18nComponent implements OnInit {
         title: 'English',
         flag: 'us'
       },
+      es: {
+        title: 'Spanish',
+        flag: 'es'
+      },
       fr: {
         title: 'French',
         flag: 'fr'
@@ -48,14 +52,10 @@ export class I18nComponent implements OnInit {
       pt: {
         title: 'Portuguese',
         flag: 'pt'
-      },
-      es: {
-        title: 'Spanish',
-        flag: 'es'
       }
     };
 
-    this._coreTranslationService.translate(english, french, german, portuguese);
+    this._coreTranslationService.translate(english, spanish, french, german, portuguese);
   }
 
   // Public Methods
