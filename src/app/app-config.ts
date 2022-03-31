@@ -44,7 +44,7 @@ export const coreConfig: CoreConfig = {
       customBackgroundColor: false,           // Boolean: true, false
       backgroundColor      : ''               // BS color i.e bg-primary, bg-success
     },
-    enableLocalStorage: true,
+    enableLocalStorage: false,
     customizer  : false,                       // Boolean: true, false (Enable theme customizer)
     scrollTop   : true,                       // Boolean: true, false (Enable scroll to top button)
     buyNow      : false                        // Boolean: true, false (Set false in real project, For demo purpose only)

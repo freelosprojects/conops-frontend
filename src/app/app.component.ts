@@ -15,7 +15,7 @@ import { CoreTranslationService } from '@core/services/translation.service';
 
 import { menu } from 'app/menu/menu';
 import { locale as menuEnglish } from 'app/menu/i18n/en';
-import { locale as menuSpanish } from 'app/menu/i18n/en';
+import { locale as menuSpanish } from 'app/menu/i18n/es';
 import { locale as menuFrench } from 'app/menu/i18n/fr';
 import { locale as menuGerman } from 'app/menu/i18n/de';
 import { locale as menuPortuguese } from 'app/menu/i18n/pt';
