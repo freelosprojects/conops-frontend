@@ -41,7 +41,7 @@ export const coreConfig: CoreConfig = {
       hidden               : false,           // Boolean: true, false
       type                 : 'footer-sticky', // footer-static, footer-sticky, d-none
       background           : 'footer-light',  // footer-light. footer-dark
-      customBackgroundColor: false,           // Boolean: true, false
+      customBackgroundColor: true,           // Boolean: true, false
       backgroundColor      : ''               // BS color i.e bg-primary, bg-success
     },
     enableLocalStorage: false,
