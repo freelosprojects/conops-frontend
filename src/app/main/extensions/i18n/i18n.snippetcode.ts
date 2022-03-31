@@ -32,6 +32,7 @@ export const snippetCodei18n: snippetCode = {
   import { CoreTranslationService } from '@core/services/translation.service';
 
   import { locale as english } from './data/en';
+  import { locale as spanish } from './data/es';
   import { locale as french } from './data/fr';
   import { locale as german } from './data/de';
   import { locale as portuguese } from './data/pt';

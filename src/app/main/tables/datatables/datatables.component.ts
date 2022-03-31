@@ -8,9 +8,9 @@ import { CoreTranslationService } from '@core/services/translation.service';
 
 import { locale as german } from 'app/main/tables/datatables/i18n/de';
 import { locale as english } from 'app/main/tables/datatables/i18n/en';
+import { locale as spanish } from 'app/main/tables/datatables/i18n/es';
 import { locale as french } from 'app/main/tables/datatables/i18n/fr';
 import { locale as portuguese } from 'app/main/tables/datatables/i18n/pt';
-import { locale as spanish } from 'app/main/tables/datatables/i18n/es';
 
 import * as snippet from 'app/main/tables/datatables/datatables.snippetcode';
 

@@ -455,6 +455,7 @@ export const snippetCodeReactiveForms: snippetCode = {
           <select id="UDLanguage" formControlName="language" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && ReactiveUDForm.language.errors }">
             <option selected value="English">English</option>
+            <option value="Spanish">Spanish</option>
             <option value="Germany">Germany</option>
             <option value="French">French</option>
             <option value="Portuguese">Portuguese</option>
