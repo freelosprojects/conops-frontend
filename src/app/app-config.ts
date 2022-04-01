@@ -10,7 +10,7 @@ import { CoreConfig } from '@core/types';
  *
  * ! IMPORTANT: If the enableLocalStorage option is true then make sure you clear the browser local storage(https://developers.google.com/web/tools/chrome-devtools/storage/localstorage#delete).
  *  ! Otherwise, it will not take the below config changes and use stored config from local storage.
- *
+ *  https://pixinvent.com/demo/vuexy-angular-admin-dashboard-template/documentation/
  */
 
 // prettier-ignore
