@@ -16,7 +16,7 @@ import { CoreConfig } from '@core/types';
 // prettier-ignore
 export const coreConfig: CoreConfig = {
   app: {
-    appName     : 'CO',                                         // App Name
+    appName     : 'jamp CO',                                    // App Name
     appTitle    : 'Control de Operaciones',                     // App Title
     appLogoImage: 'assets/images/logo/logo.svg',                // App Logo
     appLanguage : 'en',                                         // App Default Language (en, es, fr, de, pt, etc..)
