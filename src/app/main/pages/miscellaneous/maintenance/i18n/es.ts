@@ -1,6 +1,6 @@
-// i18n/es.ts
+// i18n/de.ts
 export const locale = {
-    lang: 'es',
+    lang: 'de',
     data: {
         MAINTENANCE: {
             TITLE: 'En mantenimiento',
