@@ -1,6 +1,6 @@
 {
   "name": "jamp",
-  "version": "8.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "set NODE_OPTIONS=--max_old_space_size=8192 & ng serve --open",
