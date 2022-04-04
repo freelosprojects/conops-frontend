@@ -19,7 +19,7 @@ export const coreConfig: CoreConfig = {
     appName     : 'jamp ConOps',                     // App Name
     appTitle    : 'jamp - Control de Operaciones',   // App Title
     appLogoImage: 'assets/images/logo/logo.svg',     // App Logo
-    appLanguage : 'en',                              // App Default Language (en, es, fr, de, pt, etc..)
+    appLanguage : 'en',                              // App Default Language (en, es, it, fr, de, pt, etc..)
   },
   layout: {
     skin  : 'default',                        // default, dark, bordered, semi-dark

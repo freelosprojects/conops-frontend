@@ -94,6 +94,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         title: 'Spanish',
         flag: 'es'
       },
+      it: {
+        title: 'Italian',
+        flag: 'it'
+      },
       fr: {
         title: 'French',
         flag: 'fr'

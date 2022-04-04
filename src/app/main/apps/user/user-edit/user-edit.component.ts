@@ -30,7 +30,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
     altInput: true
   };
 
-  public selectMultiLanguages = ['English', 'Spanish', 'French', 'Russian', 'German', 'Arabic', 'Sanskrit'];
+  public selectMultiLanguages = ['English', 'Spanish', 'Italian', 'French', 'Russian', 'German', 'Arabic', 'Sanskrit'];
   public selectMultiLanguagesSelected = [];
 
   // Private

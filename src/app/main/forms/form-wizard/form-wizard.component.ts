@@ -31,7 +31,7 @@ export class FormWizardComponent implements OnInit {
     { name: 'Australia' }
   ];
 
-  public selectMulti = [{ name: 'English' }, { name: 'French' }, { name: 'Spanish' }];
+  public selectMulti = [{ name: 'English' }, { name: 'Spanish' }, { name: 'Italian' }, { name: 'French' }, { name: 'Germany' }, { name: 'Potuguese' }];
   public selectMultiSelected;
 
   // private

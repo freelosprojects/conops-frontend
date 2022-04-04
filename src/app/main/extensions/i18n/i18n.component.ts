@@ -6,6 +6,7 @@ import { CoreTranslationService } from '@core/services/translation.service';
 
 import { locale as english } from 'app/main/extensions/i18n/data/en';
 import { locale as spanish } from 'app/main/extensions/i18n/data/es';
+import { locale as italian } from 'app/main/extensions/i18n/data/it';
 import { locale as french } from 'app/main/extensions/i18n/data/fr';
 import { locale as german } from 'app/main/extensions/i18n/data/de';
 import { locale as portuguese } from 'app/main/extensions/i18n/data/pt';
@@ -41,6 +42,10 @@ export class I18nComponent implements OnInit {
         title: 'Spanish',
         flag: 'es'
       },
+      it: {
+        title: 'Italian',
+        flag: 'it'
+      },
       fr: {
         title: 'French',
         flag: 'fr'
@@ -55,7 +60,7 @@ export class I18nComponent implements OnInit {
       }
     };
 
-    this._coreTranslationService.translate(english, spanish, french, german, portuguese);
+    this._coreTranslationService.translate(english, spanish, italian, french, german, portuguese);
   }
 
   // Public Methods

@@ -33,6 +33,7 @@ export const snippetCodei18n: snippetCode = {
 
   import { locale as english } from './data/en';
   import { locale as spanish } from './data/es';
+  import { locale as italian } from './data/it';
   import { locale as french } from './data/fr';
   import { locale as german } from './data/de';
   import { locale as portuguese } from './data/pt';
@@ -50,6 +51,7 @@ export const snippetCodei18n: snippetCode = {
     this._coreTranslationService.translate(
       english,
       spanish,
+      italian,
       french,
       german,
       portuguese

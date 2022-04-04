@@ -6,10 +6,11 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
 
 import { CoreTranslationService } from '@core/services/translation.service';
 
-import { locale as german } from 'app/main/tables/datatables/i18n/de';
 import { locale as english } from 'app/main/tables/datatables/i18n/en';
 import { locale as spanish } from 'app/main/tables/datatables/i18n/es';
+import { locale as italian } from 'app/main/tables/datatables/i18n/it';
 import { locale as french } from 'app/main/tables/datatables/i18n/fr';
+import { locale as german } from 'app/main/tables/datatables/i18n/de';
 import { locale as portuguese } from 'app/main/tables/datatables/i18n/pt';
 
 import * as snippet from 'app/main/tables/datatables/datatables.snippetcode';
@@ -176,7 +177,7 @@ export class DatatablesComponent implements OnInit {
    */
   constructor(private _datatablesService: DatatablesService, private _coreTranslationService: CoreTranslationService) {
     this._unsubscribeAll = new Subject();
-    this._coreTranslationService.translate(english, spanish, french, german, portuguese);
+    this._coreTranslationService.translate(english, spanish, italian, french, german, portuguese);
   }
 
   // Lifecycle Hooks

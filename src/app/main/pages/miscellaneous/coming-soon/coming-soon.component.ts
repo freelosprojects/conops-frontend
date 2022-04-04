@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { locale as english } from 'app/main/pages/miscellaneous/coming-soon/i18n/en';
 import { locale as spanish } from 'app/main/pages/miscellaneous/coming-soon/i18n/es';
+import { locale as italian } from 'app/main/pages/miscellaneous/coming-soon/i18n/it';
 import { locale as french } from 'app/main/pages/miscellaneous/coming-soon/i18n/fr';
 import { locale as german } from 'app/main/pages/miscellaneous/coming-soon/i18n/de';
 import { locale as portuguese } from 'app/main/pages/miscellaneous/coming-soon/i18n/pt';
@@ -46,7 +47,7 @@ export class ComingSoonComponent implements OnInit {
       }
     };
 
-    this._coreTranslationService.translate(english, spanish, french, german, portuguese);
+    this._coreTranslationService.translate(english, spanish, italian, french, german, portuguese);
     
   }
 
