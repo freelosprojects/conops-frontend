@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CoreCommonModule } from '@core/common.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ComingSoonComponent } from 'app/main/pages/miscellaneous/coming-soon/coming-soon.component';
 import { ErrorComponent } from 'app/main/pages/miscellaneous/error/error.component';
@@ -31,6 +32,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ComingSoonComponent, NotAuthorizedComponent, MaintenanceComponent, ErrorComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), CoreCommonModule]
+  imports: [CommonModule, RouterModule.forChild(routes), CoreCommonModule, TranslateModule]
 })
 export class MiscellaneousModule {}

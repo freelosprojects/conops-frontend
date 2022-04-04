@@ -59,16 +59,16 @@
   >
   <div class="misc-inner p-2 p-sm-3">
     <div class="w-100 text-center">
-      <h2 class="mb-1">We are launching soon 🚀</h2>
-      <p class="mb-3">We're creating something awesome. Please subscribe to get notified when it's ready!</p>
+      <h2 class="mb-1">{{ 'COMING.TITLE' | translate }} 🚀</h2>
+      <p class="mb-3">{{ 'COMING.MESSAGE' | translate }}</p>
       <form class="form-inline justify-content-center row m-0 mb-2" action="javascript:void(0);">
         <input
           class="form-control col-12 col-md-5 mb-1 mr-md-2"
           id="notify-email"
           type="text"
-          placeholder="john@example.com"
+          placeholder="{{ 'COMING.EMAIL' | translate }}"
         />
-        <button class="btn btn-primary mb-1 btn-sm-block" type="submit" rippleEffect>Notify</button>
+        <button class="btn btn-primary mb-1 btn-sm-block" type="submit" rippleEffect>{{ 'COMING.SUBSCRIBE' | translate }}</button>
       </form>
       <img
         class="img-fluid"
