@@ -1,4 +1,4 @@
-// i18n/en.ts
+// i18n/it.ts
 export const locale = {
     lang: 'it',
     data: {
@@ -6,7 +6,7 @@ export const locale = {
             TITLE: 'Prossimamente lanceremo la web...',
             MESSAGE: 'Stiamo creando qualcosa di incredibile. Per favore, lascia la tua email per avvisarti quando é pronto.',
             EMAIL: 'La tua email',
-            SUBSCRIBE: 'Avvisami',
+            BUTTON: 'Avvisami',
         }
     }
 }
