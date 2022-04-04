@@ -4,7 +4,7 @@ export const locale = {
     data: {
         ERROR: {
             TITLE: 'Página no encontrada',
-            MESSAGE: 'La página solicitada no se encontró en este servidor.',
+            MESSAGE: 'La página solicitada no se encontró en este servidor',
             BUTTON: 'Regresa al inicio',
         }
     }

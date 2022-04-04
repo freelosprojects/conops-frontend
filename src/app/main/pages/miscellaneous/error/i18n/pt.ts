@@ -4,7 +4,7 @@ export const locale = {
     data: {
         ERROR: {
             TITLE: 'Page Not Found',
-            MESSAGE: 'The requested URL was not found on this server.',
+            MESSAGE: 'The requested URL was not found on this server',
             BUTTON: 'Back to home',
         }
     }

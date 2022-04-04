@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { CoreTranslationService } from '@core/services/translation.service';
 
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { locale as english }    from 'app/main/pages/miscellaneous/maintenance/i18n/en';
+import { locale as spanish }    from 'app/main/pages/miscellaneous/maintenance/i18n/es';
+import { locale as italian }    from 'app/main/pages/miscellaneous/maintenance/i18n/it';
+import { locale as french }     from 'app/main/pages/miscellaneous/maintenance/i18n/fr';
+import { locale as german }     from 'app/main/pages/miscellaneous/maintenance/i18n/de';
+import { locale as portuguese } from 'app/main/pages/miscellaneous/maintenance/i18n/pt';
 
 import { CoreConfigService } from '@core/services/config.service';
 
@@ -21,7 +28,7 @@ export class MaintenanceComponent implements OnInit {
    *
    * @param {CoreConfigService} _coreConfigService
    */
-  constructor(private _coreConfigService: CoreConfigService) {
+  constructor(private _coreConfigService: CoreConfigService, private _coreTranslationService: CoreTranslationService) {
     this._unsubscribeAll = new Subject();
 
     // Configure the layout
@@ -40,6 +47,9 @@ export class MaintenanceComponent implements OnInit {
         enableLocalStorage: false
       }
     };
+
+    this._coreTranslationService.translate(english, spanish, italian, french, german, portuguese);
+
   }
 
   // Lifecycle Hooks
