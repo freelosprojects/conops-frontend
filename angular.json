@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vuexy": {
+    "jamp": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -34,7 +34,7 @@
               "highlight.js",
               "ng2-flatpickr"
             ],
-            "outputPath": "dist/vuexy",
+            "outputPath": "dist/jamp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -106,22 +106,22 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "vuexy:build"
+            "browserTarget": "jamp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "vuexy:build:production"
+              "browserTarget": "jamp:build:production"
             },
             "hmr": {
               "hmr": true,
-              "browserTarget": "vuexy:build:hmr"
+              "browserTarget": "jamp:build:hmr"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "vuexy:build"
+            "browserTarget": "jamp:build"
           }
         },
         "test": {
@@ -138,7 +138,7 @@
         }
       }
     },
-    "vuexy-e2e": {
+    "jamp-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -147,18 +147,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "vuexy:serve"
+            "devServerTarget": "jamp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "vuexy:serve:production"
+              "devServerTarget": "jamp:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "vuexy",
+  "defaultProject": "jamp",
   "cli": {
     "analytics": false
   }
