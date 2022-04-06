@@ -16,10 +16,10 @@ import { CoreConfig } from '@core/types';
 // prettier-ignore
 export const coreConfig: CoreConfig = {
   app: {
-    appName     : 'jamp ConOps',                     // App Name
-    appTitle    : 'jamp - Control de Operaciones',   // App Title
+    appName     : 'ConOps',                          // App Name
+    appTitle    : 'ConOps - Control de Operaciones', // App Title
     appLogoImage: 'assets/images/logo/logo.svg',     // App Logo
-    appLanguage : 'en',                              // App Default Language (en, es, it, fr, de, pt, etc..)
+    appLanguage : 'es',                              // App Default Language (en, es, it, fr, de, pt, etc..)
   },
   layout: {
     skin  : 'default',                        // default, dark, bordered, semi-dark
