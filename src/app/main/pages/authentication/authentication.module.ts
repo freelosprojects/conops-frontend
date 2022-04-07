@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CoreCommonModule } from '@core/common.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { AuthForgotPasswordV1Component } from 'app/main/pages/authentication/auth-forgot-password-v1/auth-forgot-password-v1.component';
 import { AuthForgotPasswordV2Component } from 'app/main/pages/authentication/auth-forgot-password-v2/auth-forgot-password-v2.component';
@@ -66,6 +67,6 @@ const routes: Routes = [
     AuthResetPasswordV1Component,
     AuthResetPasswordV2Component
   ],
-  imports: [CommonModule, RouterModule.forChild(routes), NgbModule, FormsModule, ReactiveFormsModule, CoreCommonModule]
+  imports: [CommonModule, RouterModule.forChild(routes), NgbModule, FormsModule, ReactiveFormsModule, CoreCommonModule, TranslateModule]
 })
 export class AuthenticationModule {}
