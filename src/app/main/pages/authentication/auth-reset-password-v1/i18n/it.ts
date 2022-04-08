@@ -9,14 +9,14 @@ export const locale = {
                 LABEL: 'Nuova password',
                 PLACEHOLDER: '············',
                 ERRORS: {
-                    REQUIRED: 'La password è richiesta',
+                    REQUIRED: 'La password è obbligatoria',
                 },
             },
             CONFIRM: {
                 LABEL: 'Conferma la password',
                 PLACEHOLDER: '············',
                 ERRORS: {
-                    REQUIRED: 'La password è richiesta',
+                    REQUIRED: 'La password è obbligatoria',
                     MATCH: 'La nuova password e la password di conferma devono corrispondere',
                 },
             },

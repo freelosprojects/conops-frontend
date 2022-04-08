@@ -11,7 +11,7 @@ export const locale = {
                 LABEL: 'e-mail',
                 PLACEHOLDER: 'mario@email.com',
                 ERRORS: {
-                    REQUIRED: 'L\'e-mail è necessaria',
+                    REQUIRED: 'L\'e-mail è obbligatoria',
                     EMAIL: 'L\'e-mail deve essere un indirizzo e-mail valido',
                 },
             },
@@ -20,7 +20,7 @@ export const locale = {
                 PLACEHOLDER: '·········',
                 FORGOT: 'Hai dimenticato la password?',
                 ERRORS: {
-                    REQUIRED: 'La password è necessaria',
+                    REQUIRED: 'La password è obbligatoria',
                 },
             },
             REMEMBER_ME: 'Ricordami',

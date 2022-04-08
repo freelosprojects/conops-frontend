@@ -9,7 +9,7 @@ export const locale = {
                 LABEL: 'e-mail',
                 PLACEHOLDER: 'mario@email.com',
                 ERRORS: {
-                    REQUIRED: 'L\'e-mail è necessaria',
+                    REQUIRED: 'L\'e-mail è obbligatoria',
                     EMAIL: 'L\'e-mail deve essere un indirizzo e-mail valido',
                 },
             },
