@@ -1,13 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { CoreTranslationService } from '@core/services/translation.service';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { cloneDeep } from 'lodash';
-import { locale as english }    from 'app/main/apps/user/user-edit/i18n/en';
 
 import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
 
@@ -44,10 +42,9 @@ export class UserEditComponent implements OnInit, OnDestroy {
    * @param {Router} router
    * @param {UserEditService} _userEditService
    */
-  constructor(private router: Router, private _userEditService: UserEditService, private _coreTranslationService: CoreTranslationService) {
+  constructor(private router: Router, private _userEditService: UserEditService) {
     this._unsubscribeAll = new Subject();
     this.urlLastValue = this.url.substr(this.url.lastIndexOf('/') + 1);
-    this._coreTranslationService.translate(english);
   }
 
   // Public Methods
