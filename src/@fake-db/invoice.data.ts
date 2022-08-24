@@ -4,11 +4,13 @@ export interface DriverResponse {
 };
 
 export interface DriverResponseData {
-  id_conductor: number;
-  nombre: string,
+  id_conductor?: number;
+  dni: string;
+  nombres: string,
   apellidos: string,
   celular: string,
-  correo: string
+  correo: string,
+  breveteCategoryId?: string;
 }
 
 export class InvoiceFakeData {

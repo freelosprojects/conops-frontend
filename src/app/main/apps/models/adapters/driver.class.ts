@@ -21,7 +21,7 @@ export interface IGenericList<T> {
 })
 export class DriverAdapter implements Adapter<Driver> {
   adapt(item: DriverResponseData): Driver {
-    const fullName = `${item.nombre} ${item.apellidos}`;
+    const fullName = `${item.nombres} ${item.apellidos}`;
     return new Driver(item.id_conductor, fullName, item.celular, item.correo);
   }
 }

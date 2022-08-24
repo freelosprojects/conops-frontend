@@ -15,16 +15,17 @@ export class UsersFakeData {
     },
     {
       id: 2,
-      fullName: 'Halsey Redmore',
-      company: 'Skinder PVT LTD',
-      role: 'Author',
-      username: 'hredmore1',
+      surname: 'Redmore Titanic',
+      mobilePhone: '987654321',
+      license: 1,
+      username: 'Halsey',
       country: 'Albania',
       contact: '(472) 607-9137',
       email: 'hredmore1@imgur.com',
       currentPlan: 'Team',
       status: 'pending',
-      avatar: 'assets/images/avatars/10.png'
+      avatar: 'assets/images/avatars/10.png',
+      dni: '72445623'
     },
     {
       id: 3,

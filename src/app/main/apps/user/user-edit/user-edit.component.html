@@ -65,12 +65,12 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="username">Username</label>
+                          <label for="username">Nombre</label>
                           <input
                             type="text"
                             id="username"
                             class="form-control"
-                            placeholder="Username"
+                            placeholder="Nombre"
                             name="username"
                             [(ngModel)]="currentRow.username"
                             [class.error]="accountForm.submitted && UserNameRef.invalid"
@@ -86,20 +86,20 @@
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="name">Name</label>
+                          <label for="surname">Apellidos</label>
                           <input
                             type="text"
-                            id="name"
+                            id="surname"
                             class="form-control"
-                            placeholder="Name"
-                            name="fullName"
-                            [(ngModel)]="currentRow.fullName"
-                            [class.error]="accountForm.submitted && FullNameRef.invalid"
-                            #FullNameRef="ngModel"
+                            placeholder="Apellidos"
+                            name="surName"
+                            [(ngModel)]="currentRow.surname"
+                            [class.error]="accountForm.submitted && SurNameRef.invalid"
+                            #SurNameRef="ngModel"
                             required
                           />
-                          <span *ngIf="accountForm.submitted && FullNameRef.invalid" class="invalid-form">
-                            <small class="form-text text-danger" *ngIf="FullNameRef.errors.required"
+                          <span *ngIf="accountForm.submitted && SurNameRef.invalid" class="invalid-form">
+                            <small class="form-text text-danger" *ngIf="SurNameRef.errors.required"
                               >This field is required!</small
                             >
                           </span>
@@ -107,12 +107,12 @@
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="email">E-mail</label>
+                          <label for="email">Correo</label>
                           <input
                             type="email"
                             id="email"
                             class="form-control"
-                            placeholder="Email"
+                            placeholder="Correo"
                             name="email"
                             [(ngModel)]="currentRow.email"
                             [class.error]="accountForm.submitted && EmailRef.invalid"
@@ -126,7 +126,7 @@
                           </span>
                         </div>
                       </div>
-                      <div class="col-md-4">
+                      <!-- <div class="col-md-4">
                         <div class="form-group">
                           <label for="status">Status</label>
                           <select class="form-control" [(ngModel)]="currentRow.status" name="status" id="status">
@@ -135,29 +135,50 @@
                             <option>pending</option>
                           </select>
                         </div>
+                      </div> -->
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="email">DNI</label>
+                          <input
+                            type="text"
+                            id="dni"
+                            class="form-control"
+                            placeholder="DNI"
+                            name="dni"
+                            [(ngModel)]="currentRow.dni"
+                            [class.error]="accountForm.submitted && DNIRef.invalid"
+                            #DNIRef="ngModel"
+                            required
+                          />
+                          <span *ngIf="accountForm.submitted && DNIRef.invalid" class="invalid-form">
+                            <small class="form-text text-danger" *ngIf="DNIRef.errors.required"
+                              >This field is required!</small
+                            >
+                          </span>
+                        </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="role">Role</label>
-                          <select class="form-control" [(ngModel)]="currentRow.role" name="role" id="role">
-                            <option>Maintainer</option>
-                            <option>Subscriber</option>
-                            <option>Author</option>
-                            <option>Editor</option>
-                            <option>Admin</option>
+                          <label for="license">Role</label>
+                          <select class="form-control" [(ngModel)]="currentRow.license" name="license" id="license">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
                           </select>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="company">Company</label>
+                          <label for="mobilePhone">Celular</label>
                           <input
                             type="text"
                             class="form-control"
-                            [(ngModel)]="currentRow.company"
-                            placeholder="Company name"
-                            id="company"
-                            name="company"
+                            [(ngModel)]="currentRow.mobilePhone"
+                            placeholder="Celular"
+                            id="mobilePhone"
+                            name="mobilePhone"
                           />
                         </div>
                       </div>
