@@ -8,6 +8,7 @@ import { FlatpickrOptions } from 'ng2-flatpickr';
 import { cloneDeep } from 'lodash';
 
 import { UserEditService } from 'app/main/apps/user/user-edit/user-edit.service';
+import { DriverResponseData } from '@fake-db/invoice.data';
 
 @Component({
   selector: 'app-user-edit',
@@ -81,7 +82,16 @@ export class UserEditComponent implements OnInit, OnDestroy {
    */
   submit(form) {
     if (form.valid) {
-      console.log('Submitted...!');
+      const driver: DriverResponseData = {
+        id_conductor: 0,
+        nombre: '',
+        apellidos: '',
+        celular: '',
+        correo: ''
+      };
+      console.log(form);
+      console.log(driver);
+      // this._userEditService.createDriver(driver);
     }
   }
 

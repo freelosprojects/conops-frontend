@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { DriverResponseData } from '@fake-db/invoice.data';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -45,5 +46,10 @@ export class UserEditService implements Resolve<any> {
         resolve(this.apiData);
       }, reject);
     });
+  }
+
+  createDriver(driver: DriverResponseData) {
+    const url = 'http://localhost:3000/api/conductores';
+    return this._httpClient.post(url, driver);
   }
 }

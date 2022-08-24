@@ -161,7 +161,7 @@
                           />
                         </div>
                       </div>
-                      <div class="col-12">
+                      <!-- <div class="col-12">
                         <div class="table-responsive border rounded mt-1">
                           <h6 class="py-1 mx-1 mb-0 font-medium-2">
                             <i data-feather="lock" [size]="20" class="mr-25"></i>
@@ -316,14 +316,13 @@
                             </tbody>
                           </table>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="col-12 d-flex flex-sm-row flex-column mt-2">
                         <button
                           type="submit"
                           (click)="submit(accountForm)"
                           class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1"
-                          rippleEffect
-                        >
+                          rippleEffect>
                           Save Changes
                         </button>
                         <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary" rippleEffect>
@@ -337,14 +336,12 @@
                 <!-- Account Tab ends -->
               </ng-template>
             </li>
-            <li ngbNavItem>
+            <!-- <li ngbNavItem>
               <a ngbNavLink class="d-flex align-items-center">
                 <i data-feather="info" class="mr-sm-50"></i><span class="d-none d-sm-block">Information</span></a
               >
               <ng-template ngbNavContent>
-                <!-- Information Tab starts -->
                 <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
-                  <!-- users edit Info form start  -->
                   <form class="form-validate">
                     <div class="row mt-1">
                       <div class="col-12">
@@ -491,19 +488,15 @@
                       </div>
                     </div>
                   </form>
-                  <!-- users edit Info form ends -->
                 </div>
-                <!-- Information Tab ends -->
               </ng-template>
-            </li>
-            <li ngbNavItem>
+            </li> -->
+            <!-- <li ngbNavItem>
               <a ngbNavLink class="d-flex align-items-center"
                 ><i data-feather="share-2" class="mr-sm-50"></i><span class="d-none d-sm-block">Social</span></a
               >
               <ng-template ngbNavContent>
-                <!-- Social Tab starts -->
                 <div class="tab-pane" id="social" aria-labelledby="social-tab" role="tabpanel">
-                  <!-- users edit social form start -->
                   <form class="form-validate">
                     <div class="row">
                       <div class="col-lg-4 col-md-6 form-group">
@@ -623,11 +616,9 @@
                       </div>
                     </div>
                   </form>
-                  <!-- users edit socail form ends -->
                 </div>
-                <!-- Social Tab ends -->
               </ng-template>
-            </li>
+            </li> -->
           </ul>
           <div [ngbNavOutlet]="nav" class="mt-2"></div>
         </div>

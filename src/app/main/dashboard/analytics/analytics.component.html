@@ -1,9 +1,10 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
+    <app-invoice-list></app-invoice-list>
     <!-- Card Advance -->
-    <div class="row match-height">
+    <!-- <div class="row match-height"> -->
       <!-- Congratulations Card -->
-      <div class="col-lg-6 col-md-12 col-sm-12">
+      <!-- <div class="col-lg-6 col-md-12 col-sm-12">
         <div class="card card-congratulations">
           <div class="card-body text-center">
             <img src="assets/images/elements/decore-left.png" class="congratulations-img-left" alt="card-img-left" />
@@ -27,12 +28,12 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!--/ Congratulations Card -->
 
-      <div class="col-lg-3 col-sm-6 col-12">
-        <div class="card">
-          <div class="card-header d-flex flex-column align-items-start pb-0">
+      <!-- <div class="col-lg-3 col-sm-6 col-12"> -->
+        <!-- <div class="card"> -->
+          <!-- <div class="card-header d-flex flex-column align-items-start pb-0">
             <div class="avatar bg-light-primary p-50 m-0">
               <div class="avatar-content">
                 <i data-feather="users" class="font-medium-5"></i>
@@ -40,10 +41,10 @@
             </div>
             <h2 class="font-weight-bolder mt-1">{{ data.subscribers_gained.analyticsData.subscribers }}</h2>
             <p class="mb-0">Subscribers Gained</p>
-          </div>
+          </div> -->
 
           <!-- Apexchart component-->
-          <div id="gainedChartoptions" #gainedChartRef>
+          <!-- <div id="gainedChartoptions" #gainedChartRef>
             <apx-chart
               [series]="data.subscribers_gained.series"
               [chart]="{
@@ -63,12 +64,12 @@
               [colors]="gainedChartoptions.colors"
               [dataLabels]="gainedChartoptions.dataLabels"
             ></apx-chart>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-12">
-        <div class="card">
-          <div class="card-header d-flex flex-column align-items-start pb-0">
+          </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+      <!-- <div class="col-lg-3 col-sm-6 col-12"> -->
+        <!-- <div class="card"> -->
+          <!-- <div class="card-header d-flex flex-column align-items-start pb-0">
             <div class="avatar bg-light-warning p-50 m-0">
               <div class="avatar-content">
                 <i data-feather="package" class="font-medium-5"></i>
@@ -76,10 +77,10 @@
             </div>
             <h2 class="font-weight-bolder mt-1">{{ data.ordersRecevied.analyticsData.orders }}</h2>
             <p class="mb-0">Orders Received</p>
-          </div>
+          </div> -->
 
           <!-- Apexchart component-->
-          <div id="orderChartoptions" #orderChartRef>
+          <!-- <div id="orderChartoptions" #orderChartRef>
             <apx-chart
               [series]="data.ordersRecevied.series"
               [chart]="{
@@ -99,18 +100,18 @@
               [colors]="orderChartoptions.colors"
               [dataLabels]="orderChartoptions.dataLabels"
             ></apx-chart>
-          </div>
-        </div>
-      </div>
-    </div>
+          </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
 
-    <div class="row match-height">
+    <!-- <div class="row match-height"> -->
       <!-- Average Sessions Card -->
-      <div class="col-lg-6 col-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row pb-50">
-              <div class="col-lg-6 col-12 d-flex justify-content-between flex-column order-lg-1 order-2 mt-1 mt-lg-0">
+      <!-- <div class="col-lg-6 col-12"> -->
+        <!-- <div class="card"> -->
+          <!-- <div class="card-body"> -->
+            <!-- <div class="row pb-50"> -->
+              <!-- <div class="col-lg-6 col-12 d-flex justify-content-between flex-column order-lg-1 order-2 mt-1 mt-lg-0">
                 <div class="mb-1 mb-lg-0">
                   <h2 class="font-weight-bolder mb-25">{{ data.avgSessions.analyticsData.avgSessions }}</h2>
                   <p class="card-text font-weight-bold mb-2">Avg Sessions</p>
@@ -120,9 +121,9 @@
                   </div>
                 </div>
                 <button type="button" rippleEffect class="btn btn-primary">View Details</button>
-              </div>
-              <div class="col-lg-6 col-12 d-flex justify-content-between flex-column text-right order-lg-2 order-1">
-                <div ngbDropdown class="chart-dropdown">
+              </div> -->
+              <!-- <div class="col-lg-6 col-12 d-flex justify-content-between flex-column text-right order-lg-2 order-1"> -->
+                <!-- <div ngbDropdown class="chart-dropdown">
                   <button
                     rippleEffect
                     class="btn btn-sm border-0 p-50"
@@ -140,10 +141,10 @@
                     <a ngbDropdownItem href="javascript:void(0);">Last Month</a>
                     <a ngbDropdownItem href="javascript:void(0);">Last Year</a>
                   </div>
-                </div>
-                <div id="avgsessionChartoptions" #avgSessionChartRef>
+                </div> -->
+                <!-- <div id="avgsessionChartoptions" #avgSessionChartRef> -->
                   <!-- Apexchart component-->
-                  <apx-chart
+                  <!-- <apx-chart
                     [chart]="{
                       type: 'bar',
                       height: 200,
@@ -157,13 +158,13 @@
                     [series]="data.avgSessions.series"
                     [plotOptions]="avgsessionChartoptions.plotOptions"
                     [tooltip]="avgsessionChartoptions.tooltip"
-                  ></apx-chart>
+                  ></apx-chart> -->
                   <!-- / Apexchart component-->
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div class="row avg-sessions pt-50">
+                <!-- </div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <!-- <hr /> -->
+            <!-- <div class="row avg-sessions pt-50">
               <div class="col-6 mb-2">
                 <p class="mb-50">Goal: {{ data.avgSessions.analyticsData.goal }}</p>
 
@@ -200,16 +201,16 @@
                   [value]="data.avgSessions.analyticsData.durationProgressbar"
                 ></ngb-progressbar>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
       <!--/ Average Sessions Card -->
 
       <!-- Support Tracker Card -->
-      <div class="col-lg-6 col-12">
-        <div class="card">
-          <div class="card-header d-flex justify-content-between pb-0">
+      <!-- <div class="col-lg-6 col-12"> -->
+        <!-- <div class="card"> -->
+          <!-- <div class="card-header d-flex justify-content-between pb-0">
             <h4 class="card-title">Support Tracker</h4>
             <div ngbDropdown class="chart-dropdown">
               <button
@@ -230,19 +231,19 @@
                 <a ngbDropdownItem href="javascript:void(0);">Last Year</a>
               </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-2 col-12 d-flex flex-column flex-wrap text-center">
+          </div> -->
+          <!-- <div class="card-body"> -->
+            <!-- <div class="row"> -->
+              <!-- <div class="col-sm-2 col-12 d-flex flex-column flex-wrap text-center">
                 <h1 class="font-large-2 font-weight-bolder mt-2 mb-0">
                   {{ data.supportTracker.analyticsData.tickets }}
                 </h1>
                 <p class="card-text">Tickets</p>
-              </div>
-              <div class="col-sm-10 col-12 d-flex justify-content-center" #supportChartRef>
-                <div id="supportChartoptions">
+              </div> -->
+              <!-- <div class="col-sm-10 col-12 d-flex justify-content-center" #supportChartRef> -->
+                <!-- <div id="supportChartoptions"> -->
                   <!-- Apexchart component-->
-                  <apx-chart
+                  <!-- <apx-chart
                     [series]="data.supportTracker.series"
                     [chart]="{
                       height: 290,
@@ -257,12 +258,12 @@
                     [fill]="supportChartoptions.fill"
                     [stroke]="supportChartoptions.stroke"
                     [labels]="supportChartoptions.labels"
-                  ></apx-chart>
+                  ></apx-chart> -->
                   <!-- / Apexchart component-->
-                </div>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between mt-1">
+                <!-- </div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="d-flex justify-content-between mt-1">
               <div class="text-center">
                 <p class="card-text mb-50">New Tickets</p>
                 <span class="font-large-1 font-weight-bold">{{ data.supportTracker.analyticsData.newTickets }}</span>
@@ -275,16 +276,16 @@
                 <p class="card-text mb-50">Response Time</p>
                 <span class="font-large-1 font-weight-bold">{{ data.supportTracker.analyticsData.responseTime }}</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
       <!--/ Support Tracker Card -->
-    </div>
+    <!-- </div> -->
 
-    <div class="row match-height">
+    <!-- <div class="row match-height"> -->
       <!-- User Timeline -->
-      <div class="col-lg-4 col-12">
+      <!-- <div class="col-lg-4 col-12">
         <div class="card card-user-timeline">
           <div class="card-header">
             <div class="d-flex align-items-center">
@@ -398,12 +399,12 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
       <!--/ User Timeline -->
       <!-- Sales Polygon Chart Card -->
-      <div class="col-lg-4 col-md-6 col-12">
-        <div class="card">
-          <div class="card-header d-flex justify-content-between align-items-start pb-1">
+      <!-- <div class="col-lg-4 col-md-6 col-12"> -->
+        <!-- <div class="card"> -->
+          <!-- <div class="card-header d-flex justify-content-between align-items-start pb-1">
             <div>
               <h4 class="card-title mb-25">Sales</h4>
               <p class="card-text">Last 6 months</p>
@@ -427,23 +428,23 @@
                 <a ngbDropdownItem href="javascript:void(0);">Last Year</a>
               </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="d-inline-block mr-1">
+          </div> -->
+          <!-- <div class="card-body"> -->
+            <!-- <div class="d-inline-block mr-1">
               <div class="d-flex align-items-center">
                 <i data-feather="circle" class="font-small-3 text-primary mr-50"></i>
                 <h6 class="mb-0">Sales</h6>
               </div>
-            </div>
-            <div class="d-inline-block">
+            </div> -->
+            <!-- <div class="d-inline-block">
               <div class="d-flex align-items-center">
                 <i data-feather="circle" class="font-small-3 text-info mr-50"></i>
                 <h6 class="mb-0">Visits</h6>
               </div>
-            </div>
-            <div id="salesChartoptions" #salesChartRef>
+            </div> -->
+            <!-- <div id="salesChartoptions" #salesChartRef> -->
               <!-- Apexchart component-->
-              <apx-chart
+              <!-- <apx-chart
                 [chart]="{
                   height: 330,
                   width: isMenuToggled === true ? salesChartRef.offsetWidth : salesChartoptions.chart.width,
@@ -470,16 +471,16 @@
                 [dataLabels]="salesChartoptions.dataLabels"
                 [dataLabels]="salesChartoptions.dataLabels"
                 [yaxis]="salesChartoptions.yaxis"
-              ></apx-chart>
+              ></apx-chart> -->
               <!-- / Apexchart component-->
-            </div>
-          </div>
-        </div>
-      </div>
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
       <!--/ Sales Polygon Chart Card -->
 
       <!-- App Design Card -->
-      <div class="col-lg-4 col-md-6 col-12">
+      <!-- <div class="col-lg-4 col-md-6 col-12">
         <div class="card card-app-design">
           <div class="card-body">
             <div class="badge badge-light-primary">03 Sep, 20</div>
@@ -527,10 +528,10 @@
             <button type="button" rippleEffect class="btn btn-primary btn-block">Join Team</button>
           </div>
         </div>
-      </div>
+      </div> -->
       <!--/ App Design Card -->
-    </div>
+    <!-- </div> -->
 
-    <app-invoice-list></app-invoice-list>
+    <!-- <app-invoice-list></app-invoice-list> -->
   </div>
 </div>

@@ -51,17 +51,17 @@ const routes: Routes = [
   {
     path: 'preview/:id',
     component: InvoicePreviewComponent,
-    resolve: {
-      data: InvoicePreviewService
-    },
+    // resolve: {
+    //   data: InvoicePreviewService
+    // },
     data: { path: 'user-view/:id', animation: 'InvoicePreviewComponent' }
   },
   {
     path: 'edit/:id',
     component: InvoiceEditComponent,
-    resolve: {
-      data: InvoiceEditService
-    },
+    // resolve: {
+    //   data: InvoiceEditService
+    // },
     data: { path: 'user-view/:id', animation: 'InvoiceEditComponent' }
   },
   {

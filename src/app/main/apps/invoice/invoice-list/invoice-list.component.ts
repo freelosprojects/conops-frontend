@@ -7,6 +7,8 @@ import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { CoreConfigService } from '@core/services/config.service';
 
 import { InvoiceListService } from 'app/main/apps/invoice/invoice-list/invoice-list.service';
+import { DriverResponseData } from '@fake-db/invoice.data';
+import { Driver } from '../../models/adapters/driver.class';
 
 @Component({
   selector: 'app-invoice-list',
@@ -16,7 +18,8 @@ import { InvoiceListService } from 'app/main/apps/invoice/invoice-list/invoice-l
 })
 export class InvoiceListComponent implements OnInit, OnDestroy {
   // public
-  public data: any;
+  fullName: string = '';
+  public data: Driver[];
   public selectedOption = 10;
   public ColumnMode = ColumnMode;
   public selectStatus: any = [
@@ -38,7 +41,7 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
   // private
   private tempData = [];
   private _unsubscribeAll: Subject<any>;
-  public rows;
+  public rows: Driver[];
   public tempFilterData;
   public previousStatusFilter = '';
 
@@ -113,27 +116,35 @@ export class InvoiceListComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    // Subscribe config change
-    this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
-      // If we have zoomIn route Transition then load datatable after 450ms(Transition will finish in 400ms)
-      if (config.layout.animation === 'zoomIn') {
-        setTimeout(() => {
-          this._invoiceListService.onInvoiceListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-            this.data = response;
-            this.rows = this.data;
-            this.tempData = this.rows;
-            this.tempFilterData = this.rows;
-          });
-        }, 450);
-      } else {
-        this._invoiceListService.onInvoiceListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-          this.data = response;
-          this.rows = this.data;
-          this.tempData = this.rows;
-          this.tempFilterData = this.rows;
-        });
-      }
+    this._invoiceListService.getInvoiceResponse().subscribe(res => {
+      console.log(res);
+      this.data = res.data;
+      this.rows = this.data;
+      this.tempData = this.rows;
+      this.tempFilterData = this.rows;
     });
+    // Subscribe config change
+    // this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
+    //   // If we have zoomIn route Transition then load datatable after 450ms(Transition will finish in 400ms)
+    //   if (config.layout.animation === 'zoomIn') {
+    //     setTimeout(() => {
+    //       this._invoiceListService.onInvoiceListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    //         this.data = response.data;
+    //         this.rows = this.data;
+    //         this.tempData = this.rows;
+    //         this.tempFilterData = this.rows;
+    //       });
+    //     }, 450);
+    //   } else {
+    //     this._invoiceListService.onInvoiceListChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+    //       console.log(response);
+    //       this.data = response.data;
+    //       this.rows = this.data;
+    //       this.tempData = this.rows;
+    //       this.tempFilterData = this.rows;
+    //     });
+    //   }
+    // });
   }
 
   /**

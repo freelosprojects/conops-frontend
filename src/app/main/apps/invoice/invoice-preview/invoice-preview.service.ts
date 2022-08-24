@@ -43,6 +43,7 @@ export class InvoicePreviewService implements Resolve<any> {
 
     return new Promise((resolve, reject) => {
       this._httpClient.get(url).subscribe((response: any) => {
+        console.log(response);
         this.apiData = response;
         this.onInvoicPreviewChanged.next(this.apiData);
         resolve(this.apiData);
