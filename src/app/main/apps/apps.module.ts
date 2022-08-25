@@ -37,7 +37,15 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
-  }
+  },
+  {
+    path: 'driver',
+    loadChildren: () => import('./driver/driver.module').then(m => m.DriverModule)
+  },
+  {
+    path: 'client',
+    loadChildren: () => import('./clients/client.module').then(m => m.ClientModule)
+  },
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);

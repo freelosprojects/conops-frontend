@@ -1,0 +1,240 @@
+<h1>{{ title }} Conductor</h1>
+
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <section class="app-user-edit">
+      <div class="card">
+        <div class="card-body">
+          <ul ngbNav #nav="ngbNav" class="nav nav-pills">
+            <li ngbNavItem>
+              <ng-template ngbNavContent>
+                <div
+                  class="tab-pane active"
+                  id="account"
+                  aria-labelledby="account-tab"
+                  role="tabpanel"
+                >
+                  <!-- <div class="media mb-2">
+                    <div *ngIf="driver.avatar.length > 0; else customAvatar">
+                      <img
+                        class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer"
+                        [src]="avatarImage"
+                        height="90"
+                        width="90"
+                        alt="User avatar"
+                      />
+                    </div>
+                    <ng-template #customAvatar>
+                      <div
+                        class="mr-1 ml-0"
+                        [ngClass]="{
+                          'bg-light-success': driver.status == 'active',
+                          'bg-light-secondary': driver.status == 'inactive',
+                          'bg-light-warning': driver.status == 'pending'
+                        }"
+                      >
+                        <div class="rounded p-3">{{ driver.fullName | initials }}</div>
+                      </div>
+                    </ng-template>
+                    <div class="media-body mt-50">
+                      <h4>{{ driver.fullName }}</h4>
+                      <div class="col-12 d-flex mt-1 px-0">
+                        <label class="btn btn-primary mr-75 mb-0" for="change-picture">
+                          <span class="d-none d-sm-block">Change</span>
+                          <input
+                            class="form-control"
+                            type="file"
+                            id="change-picture"
+                            hidden
+                            accept="image/png, image/jpeg, image/jpg"
+                            (change)="uploadImage($event)"
+                          />
+                          <span class="d-block d-sm-none">
+                            <i class="mr-0" data-feather="edit"></i>
+                          </span>
+                        </label>
+                        <button class="btn btn-outline-secondary d-none d-sm-block" rippleEffect>Remove</button>
+                        <button class="btn btn-outline-secondary d-block d-sm-none">
+                          <i class="mr-0" data-feather="trash-2"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div> -->
+                  <form
+                    class="form-validate"
+                    (ngSubmit)="(accountForm.form.valid)"
+                    #accountForm="ngForm"
+                  >
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="name">Nombre</label>
+                          <input
+                            type="text"
+                            id="name"
+                            class="form-control"
+                            placeholder="Nombre"
+                            name="name"
+                            [(ngModel)]="driver.name"
+                            [class.error]="
+                              accountForm.submitted && NameRef.invalid
+                            "
+                            #NameRef="ngModel"
+                            required
+                          />
+                          <span
+                            *ngIf="accountForm.submitted && NameRef.invalid"
+                            class="invalid-form"
+                          >
+                            <small
+                              class="form-text text-danger"
+                              *ngIf="NameRef.errors.required"
+                            >
+                              This field is required!
+                            </small>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="surname">Apellidos</label>
+                          <input
+                            type="text"
+                            id="surname"
+                            class="form-control"
+                            placeholder="Apellidos"
+                            name="surName"
+                            [(ngModel)]="driver.surname"
+                            [class.error]="
+                              accountForm.submitted && SurNameRef.invalid
+                            "
+                            #SurNameRef="ngModel"
+                            required
+                          />
+                          <span
+                            *ngIf="accountForm.submitted && SurNameRef.invalid"
+                            class="invalid-form"
+                          >
+                            <small
+                              class="form-text text-danger"
+                              *ngIf="SurNameRef.errors.required"
+                              >This field is required!</small
+                            >
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="email">Correo</label>
+                          <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="Correo"
+                            name="email"
+                            [(ngModel)]="driver.email"
+                            [class.error]="
+                              accountForm.submitted && EmailRef.invalid
+                            "
+                            #EmailRef="ngModel"
+                            required
+                          />
+                          <span
+                            *ngIf="accountForm.submitted && EmailRef.invalid"
+                            class="invalid-form"
+                          >
+                            <small
+                              class="form-text text-danger"
+                              *ngIf="EmailRef.errors.required"
+                              >This field is required!</small
+                            >
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="email">DNI</label>
+                          <input
+                            type="text"
+                            id="dni"
+                            class="form-control"
+                            placeholder="DNI"
+                            name="dni"
+                            [(ngModel)]="driver.dni"
+                            [class.error]="
+                              accountForm.submitted && DNIRef.invalid
+                            "
+                            #DNIRef="ngModel"
+                            required
+                          />
+                          <span
+                            *ngIf="accountForm.submitted && DNIRef.invalid"
+                            class="invalid-form"
+                          >
+                            <small
+                              class="form-text text-danger"
+                              *ngIf="DNIRef.errors.required"
+                              >This field is required!</small
+                            >
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="idLicenseCategory">Categoría Brevete</label>
+                          <select 
+                            class="form-control"
+                            [(ngModel)]="driver.license ? driver.license.idLicenseCategory : driver.idLicenseCategory"
+                            name="idLicenseCategory"
+                            id="idLicenseCategory"
+                          >
+                            <option [value]="1">test 1</option>
+                            <option [value]="2">test 2</option>
+                            <option [value]="3">test 3</option>
+                            <option [value]="4">test 4</option>
+                            <option [value]="5">test 5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="mobilePhone">Celular</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="driver.mobilePhone"
+                            placeholder="Celular"
+                            id="mobilePhone"
+                            name="mobilePhone"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                        <button
+                          type="submit"
+                          (click)="submit(accountForm)"
+                          class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1"
+                          rippleEffect
+                        >
+                          Guardar
+                        </button>
+                        <!-- <button
+                          (click)="resetFormWithDefaultValues()"
+                          class="btn btn-outline-secondary"
+                          rippleEffect
+                        >
+                          Reset
+                        </button> -->
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -58,7 +58,7 @@ export class InvoiceListService implements Resolve<any> {
     return this._httpClient.get<IGenericList<DriverResponseData>>(url).pipe(
       map((data) => ({
         data: data.data.map(resMap => this._adapter.adapt(resMap)),
-        count: 0
+        count: data.count
       }))
     );
   }

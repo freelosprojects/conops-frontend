@@ -10,7 +10,13 @@ export interface DriverResponseData {
   apellidos: string,
   celular: string,
   correo: string,
-  breveteCategoryId?: string;
+  breveteCategory?: LicenseData;
+  breveteCategoryId?: number;
+}
+
+interface LicenseData {
+  id_breveteCategory: number;
+  breveteCategory: string 
 }
 
 export class InvoiceFakeData {

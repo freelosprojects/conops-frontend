@@ -75,6 +75,12 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/charts-and-maps/charts-and-maps.module').then(m => m.ChartsAndMapsModule),
     canActivate: [AuthGuard]
   },
+  // Custom Routes
+  // {
+  //   path: 'driver-management',
+  //   loadChildren: () => import('./main/apps').then(),
+  //   canActivate: [AuthGuard]
+  // },
   {
     path: '',
     redirectTo: '/dashboard/ecommerce',

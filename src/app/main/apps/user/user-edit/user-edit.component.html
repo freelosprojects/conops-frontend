@@ -65,14 +65,14 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="username">Nombre</label>
+                          <label for="name">Nombre</label>
                           <input
                             type="text"
-                            id="username"
+                            id="name"
                             class="form-control"
                             placeholder="Nombre"
-                            name="username"
-                            [(ngModel)]="currentRow.username"
+                            name="name"
+                            [(ngModel)]="currentRow.name"
                             [class.error]="accountForm.submitted && UserNameRef.invalid"
                             #UserNameRef="ngModel"
                             required
@@ -161,11 +161,11 @@
                         <div class="form-group">
                           <label for="license">Role</label>
                           <select class="form-control" [(ngModel)]="currentRow.license" name="license" id="license">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option [value]="1">test 1</option>
+                            <option [value]="2">test 2</option>
+                            <option [value]="3">test 3</option>
+                            <option [value]="4">test 4</option>
+                            <option [value]="5">test 5</option>
                           </select>
                         </div>
                       </div>

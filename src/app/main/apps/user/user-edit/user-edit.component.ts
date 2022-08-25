@@ -85,7 +85,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
       const driverForm = form.value;
       const driver: DriverResponseData = {
         dni: driverForm.dni,
-        nombres: driverForm.username,
+        nombres: driverForm.name,
         apellidos: driverForm.surName,
         celular: driverForm.mobilePhone,
         correo: driverForm.email,
