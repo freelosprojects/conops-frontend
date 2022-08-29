@@ -8,6 +8,7 @@ import { IResponseList } from '@core/models/response.model';
 
 import { LicenseCategoryService } from './services/license-category.service';
 import { ILicenseCategory } from './models/license-category.model';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-license-category',
@@ -16,6 +17,9 @@ import { ILicenseCategory } from './models/license-category.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class LicenseCategoryComponent implements OnInit {
+
+  ColumnMode = ColumnMode;
+
   license: FormControl;
 
   selectedOption: FormControl;

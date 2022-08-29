@@ -31,6 +31,7 @@
                   [headerHeight]="50"
                   [footerHeight]="50"
                   [scrollbarH]="true"
+                  [columnMode]="ColumnMode.force"
                   [limit]="selectedOption.value"
                 >
                   <ngx-datatable-column name="#">
@@ -42,7 +43,6 @@
                   <ngx-datatable-column
                     name="Categoria de brevete"
                     prop="color"
-                    [width]="250"
                   ></ngx-datatable-column>
   
                   <ngx-datatable-column name="Acciones" [sortable]="false">

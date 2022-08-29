@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { IColor } from '@core/models/color.model';
 import { IResponseList } from '@core/models/response.model';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subject, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ColorService } from '../services/color.service';
@@ -15,6 +16,7 @@ import { ColorService } from '../services/color.service';
 export class ColorListComponent implements OnInit, OnDestroy {
 
   public color: FormControl;
+  public ColumnMode = ColumnMode;
   public selectedOption: FormControl;
 
   public colorList: IResponseList<IColor> = {} as IResponseList<IColor>;
