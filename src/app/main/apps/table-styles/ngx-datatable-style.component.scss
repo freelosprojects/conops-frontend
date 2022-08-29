@@ -3,3 +3,13 @@
 @import '@core/scss/angular/libs/select.component.scss';
 
 @import '@core/scss/base/bootstrap-extended/_include';
+
+.data-list-wrapper {
+  .col-actions {
+    a {
+      &:not(.dropdown-item) {
+        color: $body-color;
+      }
+    }
+  }
+}
