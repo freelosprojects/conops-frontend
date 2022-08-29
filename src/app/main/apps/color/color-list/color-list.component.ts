@@ -22,7 +22,7 @@ export class ColorListComponent implements OnInit, OnDestroy {
   public colorList: IResponseList<IColor> = {} as IResponseList<IColor>;
   public itemSelected: IColor | null;
 
-  public colorsubject$: Subject<void> = new Subject();
+  public colorSubject$: Subject<void> = new Subject();
   public subscription$: Subscription = new Subscription();
 
   constructor(private _colorService: ColorService) {
@@ -44,18 +44,18 @@ export class ColorListComponent implements OnInit, OnDestroy {
 
   getColorList(): void {
     this.subscription$.add(
-      this.colorsubject$.pipe(
+      this.colorSubject$.pipe(
         switchMap(() => this._colorService.getColorList())
       ).subscribe(res => this.colorList = res)
     );
-    this.colorsubject$.next();
+    this.colorSubject$.next();
   }
 
   submitForm(): void {
     if (this.colorIsInvalid) return;
 
     this._colorService.createColor({ color: this.color.value }).subscribe({
-      next: () => this.colorsubject$.next()
+      next: () => this.colorSubject$.next()
     });
   }
 
