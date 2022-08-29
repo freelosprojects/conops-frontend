@@ -60,6 +60,7 @@ export const menu: CoreMenu[] = [
       }
     ]
   },
+  // Client Management
   {
     id: 'client-management',
     type: 'section',
@@ -80,6 +81,95 @@ export const menu: CoreMenu[] = [
           }
         ]
       }
+    ]
+  },
+  // Vehicles
+  {
+    id: 'vehicle-management',
+    type: 'section',
+    title: 'Gestión de vehículos',
+    children: [
+      {
+        id: 'vehicle',
+        title: 'Vehículos',
+        type: 'collapsible',
+        icon: 'shopping-cart',
+        children: [
+          {
+            id: 'vehicleList',
+            title: 'Lista',
+            type: 'item',
+            icon: 'circle',
+            url: 'apps/vehicle/vehicle-list'
+          }
+        ]
+      }
+    ]
+  },
+  // License Category
+  {
+    id: 'license-category-management',
+    type: 'section',
+    title: 'Gestión de vehículos',
+    children: [
+      {
+        id: 'licenseCategory',
+        title: 'Categoría Brevete',
+        type: 'collapsible',
+        icon: 'shopping-cart',
+        children: [
+          {
+            id: 'vehicleList',
+            title: 'Lista',
+            type: 'item',
+            icon: 'circle',
+            url: 'apps/license-category/'
+          }
+        ]
+      }
+    ]
+  },
+  // Caracteristicas
+  {
+    id: 'feature-management',
+    type: 'section',
+    title: 'Configuración',
+    children: [
+      {
+        id: 'colors',
+        title: 'Colores',
+        type: 'item',
+        icon: 'droplet',
+        url: 'apps/color/'
+      },
+      {
+        id: 'brands',
+        title: 'Marcas',
+        type: 'item',
+        icon: 'copy',
+        url: 'apps/brand/'
+      },
+      {
+        id: 'models',
+        title: 'Modelos',
+        type: 'item',
+        icon: 'box',
+        url: 'apps/model/'
+      },
+      {
+        id: 'type-vehicle',
+        title: 'Tipos de vehículos',
+        type: 'item',
+        icon: 'type',
+        url: 'apps/type-vehicle/'
+      },
+      {
+        id: 'fuel',
+        title: 'Combustible',
+        type: 'item',
+        icon: 'archive',
+        url: 'apps/fuel/'
+      },
     ]
   },
   // Apps & Pages

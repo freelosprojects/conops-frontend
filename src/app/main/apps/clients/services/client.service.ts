@@ -31,7 +31,7 @@ export class ClientService {
   }
 
   /**
-   * @description GET - Search driver by ID.
+   * @description GET - Search client by ID.
    * @param idClient
    * @returns Clients.
    */
@@ -64,5 +64,9 @@ export class ClientService {
    */
   deleteClient(idClient: number) {
     return this._httpClient.delete(`${this._url}/${idClient}`);
+  }
+
+  createPostData(myObject) {
+    return this._httpClient.post(EndpointsRoutes.vehicles, myObject);
   }
 }

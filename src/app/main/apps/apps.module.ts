@@ -50,6 +50,14 @@ const routes: Routes = [
     path: 'license-category',
     loadChildren: () => import('./license-category/license-category.module').then((m) => m.LicenseCategoryModule),
   },
+  {
+    path: 'vehicle',
+    loadChildren: () => import('./vehicle/vehicle.module').then(m => m.VehicleModule)
+  },
+  {
+    path: 'color',
+    loadChildren: () => import('./color/color.module').then(m => m.ColorModule)
+  },
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);

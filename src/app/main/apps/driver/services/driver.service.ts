@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { DriverResponseData } from '@fake-db/invoice.data';
 import { EndpointsRoutes } from 'app/config/endpoint.config';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Driver, DriverAdapter, IGenericList } from '../../models/adapters/driver.class';
 
 @Injectable({
