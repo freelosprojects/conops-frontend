@@ -25,7 +25,9 @@ export class DriverListComponent implements OnInit, OnDestroy {
 
   getDriverList(): void {
     this.subscription$.add(
-      this._driverService.getDriverList().subscribe(dataDriver => this.rows = dataDriver.data)
+      this._driverService.getDriverList().subscribe(dataDriver => {
+        this.rows = dataDriver.data;
+      })
     );
   }
 

@@ -1,0 +1,152 @@
+<h1>{{ title }} Cliente</h1>
+
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <section class="app-user-edit">
+      <div class="card">
+        <div class="card-body">
+          <div
+            class="tab-pane active"
+            id="account"
+            aria-labelledby="account-tab"
+            role="tabpanel"
+          >
+            <form [formGroup]="vehicleForm">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="placa">Placa</label>
+                    <input
+                      type="text"
+                      id="placa"
+                      class="form-control"
+                      placeholder="Placa"
+                      formControlName="plate"
+                      required
+                    />
+                    <!-- <span
+                      *ngIf="accountForm.submitted && PlateRef.invalid"
+                      class="invalid-form"
+                    >
+                      <small
+                        class="form-text text-danger"
+                        *ngIf="PlateRef.errors.required"
+                      >
+                        This field is required!
+                      </small>
+                    </span> -->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="brand">Marca</label>
+                    <ng-select
+                      id="brand"
+                      placeholder="Seleccione marca"
+                      [items]="selectBrand"
+                      formControlName="brand"
+                    >
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <ng-select
+                      id="model"
+                      placeholder="Seleccione modelo"
+                      [items]="selectModel"
+                      formControlName="model"
+                    >
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="color">Color</label>
+                    <ng-select
+                      id="color"
+                      placeholder="Seleccione color"
+                      [items]="selectColor"
+                      formControlName="color"
+                    >
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="passenger">Pasajeros</label>
+                    <input
+                      type="text"
+                      id="passenger"
+                      class="form-control"
+                      placeholder="Marca"
+                      formControlName="passenger"
+                      required
+                    />
+                    <!-- <span
+                      *ngIf="accountForm.submitted && NameRef.invalid"
+                      class="invalid-form"
+                    >
+                      <small
+                        class="form-text text-danger"
+                        *ngIf="NameRef.errors.required"
+                        >This field is required!</small
+                      >
+                    </span> -->
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="type">Tipo</label>
+                    <ng-select
+                      id="type"
+                      placeholder="Seleccione tipo"
+                      [items]="selectType"
+                      formControlName="type"
+                    >
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="license">Categoría Brevete</label>
+                    <ng-select
+                      id="license"
+                      placeholder="Seleccione categoría"
+                      [items]="selectLicenseCategory"
+                      formControlName="license"
+                    >
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="fuel">Tipo Combustible</label>
+                    <ng-select
+                      id="fuel"
+                      placeholder="Seleccione combustible"
+                      [items]="selectFuel"
+                      formControlName="fuel"
+                    >
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                  <button
+                    type="submit"
+                    (click)="submit()"
+                    class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1"
+                    rippleEffect
+                  >
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
