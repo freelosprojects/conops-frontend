@@ -12,6 +12,7 @@ import { ISelectEntity } from '../../../models/select-entity.model';
 import { TripService } from '../services/trip.service';
 import { switchMap } from 'rxjs/operators';
 import { ITripPost, IWorker, IWorkerPost } from '../models/trip.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trip-add',
@@ -46,7 +47,12 @@ export class TripAddComponent implements OnInit {
 
   private _workers: IWorker[];
 
-  constructor(private _fb: FormBuilder, private _selectEntity: SelectEntityService, private _tripService: TripService) {
+  constructor(
+    private _fb: FormBuilder,
+    private _selectEntity: SelectEntityService,
+    private _tripService: TripService,
+    private _router: Router
+  ) {
     this.formTrip = this._fb.group({
       date: new FormControl(null, Validators.required),
       idClient: new FormControl(null, Validators.required),
@@ -89,20 +95,21 @@ export class TripAddComponent implements OnInit {
       },
     });
 
-    this.addItem();
+    this.addItem(true);
   }
 
-  passangerForm(): FormGroup {
+  passangerForm(isDisabled = true): FormGroup {
     return this._fb.group({
-      dni: new FormControl({ value: null, disabled: true }, Validators.required),
+      dni: new FormControl(isDisabled ? { value: null, disabled: true } : null, Validators.required),
       names: new FormControl({ value: null, disabled: true }, Validators.required),
       idArea: new FormControl(null, Validators.required),
       idWorker: new FormControl(null, Validators.required),
     });
   }
 
-  addItem(): void {
-    this.passangersFieldAsFormArray.push(this.passangerForm());
+  addItem(isDisabled = false): void {
+    if (this.passangersFieldAsFormArray.invalid) return;
+    this.passangersFieldAsFormArray.push(this.passangerForm(isDisabled));
   }
 
   deleteItem(index: number): void {
@@ -129,6 +136,8 @@ export class TripAddComponent implements OnInit {
       console.log('ups parece que el trabajador no esta registrado con el cliente');
       return;
     }
+
+    this._workers = this._workers.filter((workerToFilter) => workerToFilter.dni !== worker.dni);
 
     const { nombres, apellidos, idTrabajador } = worker;
 
@@ -177,8 +186,11 @@ export class TripAddComponent implements OnInit {
       ),
     };
 
-    console.log(tripPost);
-
-    this._tripService.postTrip(tripPost).subscribe(console.log);
+    this._tripService.postTrip(tripPost).subscribe({
+      next: (response) => {
+        console.log(response);
+        this._router.navigateByUrl('/apps/trip');
+      },
+    });
   }
 }

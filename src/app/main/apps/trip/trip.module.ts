@@ -4,7 +4,7 @@ import { Route, RouterModule } from '@angular/router';
 
 const routes: Route[] = [
   {
-    path: '',
+    path: 'trip-list',
     loadChildren: () => import('./trip-list/trip-list.module').then((m) => m.TripListModule),
   },
   {

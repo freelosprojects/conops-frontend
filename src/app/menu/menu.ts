@@ -14,7 +14,7 @@ export const menu: CoreMenu[] = [
     badge: {
       title: '2',
       translate: 'MENU.DASHBOARD.BADGE',
-      classes: 'badge-light-warning badge-pill'
+      classes: 'badge-light-warning badge-pill',
     },
     children: [
       {
@@ -24,7 +24,7 @@ export const menu: CoreMenu[] = [
         type: 'item',
         role: ['Admin'], //? To set multiple role: ['Admin', 'Client']
         icon: 'circle',
-        url: 'dashboard/analytics'
+        url: 'dashboard/analytics',
       },
       {
         // If role is not assigned will be display to all
@@ -33,9 +33,39 @@ export const menu: CoreMenu[] = [
         translate: 'MENU.DASHBOARD.ECOMMERCE',
         type: 'item',
         icon: 'circle',
-        url: 'dashboard/ecommerce'
-      }
-    ]
+        url: 'dashboard/ecommerce',
+      },
+    ],
+  },
+  // Trip Management
+  {
+    id: 'trip-management',
+    type: 'section',
+    title: 'Gestión de viajes',
+    children: [
+      {
+        id: 'trip',
+        title: 'Viajes',
+        type: 'collapsible',
+        icon: 'map',
+        children: [
+          {
+            id: 'tripList',
+            title: 'Lista',
+            type: 'item',
+            icon: 'circle',
+            url: 'apps/trip/trip-list',
+          },
+          {
+            id: 'tripAdd',
+            title: 'Crear',
+            type: 'item',
+            icon: 'circle',
+            url: 'apps/trip/trip-add',
+          },
+        ],
+      },
+    ],
   },
   // Driver Management
   {
@@ -54,11 +84,11 @@ export const menu: CoreMenu[] = [
             title: 'Lista',
             type: 'item',
             icon: 'circle',
-            url: 'apps/driver/driver-list'
-          }
-        ]
-      }
-    ]
+            url: 'apps/driver/driver-list',
+          },
+        ],
+      },
+    ],
   },
   // Client Management
   {
@@ -77,11 +107,11 @@ export const menu: CoreMenu[] = [
             title: 'Lista',
             type: 'item',
             icon: 'circle',
-            url: 'apps/client/client-list'
-          }
-        ]
-      }
-    ]
+            url: 'apps/client/client-list',
+          },
+        ],
+      },
+    ],
   },
   // Vehicles
   {
@@ -100,11 +130,11 @@ export const menu: CoreMenu[] = [
             title: 'Lista',
             type: 'item',
             icon: 'circle',
-            url: 'apps/vehicle/vehicle-list'
-          }
-        ]
-      }
-    ]
+            url: 'apps/vehicle/vehicle-list',
+          },
+        ],
+      },
+    ],
   },
   // License Category
   {
@@ -123,11 +153,11 @@ export const menu: CoreMenu[] = [
             title: 'Lista',
             type: 'item',
             icon: 'circle',
-            url: 'apps/license-category/'
-          }
-        ]
-      }
-    ]
+            url: 'apps/license-category/',
+          },
+        ],
+      },
+    ],
   },
   // Caracteristicas
   {
@@ -140,37 +170,37 @@ export const menu: CoreMenu[] = [
         title: 'Colores',
         type: 'item',
         icon: 'droplet',
-        url: 'apps/color/'
+        url: 'apps/color/',
       },
       {
         id: 'brands',
         title: 'Marcas',
         type: 'item',
         icon: 'copy',
-        url: 'apps/brand/'
+        url: 'apps/brand/',
       },
       {
         id: 'models',
         title: 'Modelos',
         type: 'item',
         icon: 'box',
-        url: 'apps/model/'
+        url: 'apps/model/',
       },
       {
         id: 'type-vehicle',
         title: 'Tipos de vehículos',
         type: 'item',
         icon: 'type',
-        url: 'apps/type-vehicle/'
+        url: 'apps/type-vehicle/',
       },
       {
         id: 'fuel',
         title: 'Combustible',
         type: 'item',
         icon: 'archive',
-        url: 'apps/fuel/'
+        url: 'apps/fuel/',
       },
-    ]
+    ],
   },
   // Apps & Pages
   // {
