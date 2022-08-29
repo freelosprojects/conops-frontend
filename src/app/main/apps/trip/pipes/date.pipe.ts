@@ -6,7 +6,6 @@ dayjs.extend(localizedFormat);
 @Pipe({ name: 'dayJs' })
 export class DayJsPipe implements PipeTransform {
   transform(date: Date, type: 'date' | 'hour' = 'date'): string {
-    console.log({ date, type });
     switch (type) {
       case 'hour':
         return dayjs(date).format('LT');
