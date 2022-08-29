@@ -7,7 +7,7 @@ export const fadeInLeft = trigger('fadeInLeft', [
       ':enter, :leave',
       style({ position: 'absolute', left: 0, width: '100%', paddingRight: '2rem', paddingLeft: '2rem', opacity: 0 }),
       {
-        optional: true
+        optional: true,
       }
     ),
     query(':enter', style({ transform: 'translateX(-100%)', opacity: 0 }), { optional: true }),
@@ -17,15 +17,15 @@ export const fadeInLeft = trigger('fadeInLeft', [
         ':leave',
         [
           style({ transform: 'translateX(0%)' }),
-          animate('600ms ease', style({ opacity: 1, transform: 'translateX(100%)' }))
+          animate('600ms ease', style({ opacity: 1, transform: 'translateX(100%)' })),
         ],
         { optional: true }
       ),
       query(':enter', [animate('800ms ease', style({ opacity: 1, transform: 'translateX(0%)' })), animateChild()], {
-        optional: true
-      })
-    ])
-  ])
+        optional: true,
+      }),
+    ]),
+  ]),
 ]);
 
 // Animation: ZoomIn
@@ -41,8 +41,8 @@ export const zoomIn = trigger('zoomIn', [
           paddingRight: '2rem',
           paddingLeft: '2rem',
           opacity: 0,
-          transform: 'scale(0.5) translateY(-20%)'
-        })
+          transform: 'scale(0.5) translateY(-20%)',
+        }),
       ],
       { optional: true }
     ),
@@ -52,13 +52,13 @@ export const zoomIn = trigger('zoomIn', [
         animate(
           '400ms ease',
           style({ opacity: 1, paddingRight: '2rem', paddingLeft: '2rem', transform: 'scale(1) translateY(0)' })
-        )
+        ),
       ],
       {
-        optional: true
+        optional: true,
       }
-    )
-  ])
+    ),
+  ]),
 ]);
 
 // Animation: FadeIn
@@ -73,13 +73,20 @@ export const fadeIn = trigger('fadeIn', [
           width: '100%',
           paddingRight: '2rem',
           paddingLeft: '2rem',
-          opacity: 0
-        })
+          opacity: 0,
+        }),
       ],
       { optional: true }
     ),
     query(':enter', [animate('500ms ease', style({ opacity: 1, paddingRight: '2rem', paddingLeft: '2rem' }))], {
-      optional: true
-    })
-  ])
+      optional: true,
+    }),
+  ]),
+]);
+
+export const repeaterAnimation = trigger('heightIn', [
+  transition(':enter', [
+    style({ opacity: '0', height: '0px' }),
+    animate('.2s ease-out', style({ opacity: '1', height: '*' })),
+  ]),
 ]);
