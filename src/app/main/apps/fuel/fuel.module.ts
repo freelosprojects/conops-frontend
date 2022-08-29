@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 import { CoreCommonModule } from '@core/common.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CoreDirectivesModule } from '@core/directives/directives';
-import { RouterModule, Routes } from '@angular/router';
-import { ColorListComponent } from './color-list/color-list.component';
+import { FuelComponent } from './fuel-list/fuel.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ColorListComponent,
+    component: FuelComponent,
   }
 ];
 
+
 @NgModule({
-  declarations: [ColorListComponent],
+  declarations: [FuelComponent],
   imports: [
     CommonModule,
     CoreCommonModule,
@@ -23,6 +24,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     CoreDirectivesModule,
     RouterModule.forChild(routes)
-  ],
+  ]
 })
-export class ColorModule { }
+export class FuelModule { }

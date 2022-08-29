@@ -184,14 +184,14 @@ export const menu: CoreMenu[] = [
         title: 'Modelos',
         type: 'item',
         icon: 'box',
-        url: 'apps/model/',
+        url: 'apps/vehicle-model/',
       },
       {
         id: 'type-vehicle',
         title: 'Tipos de vehículos',
         type: 'item',
         icon: 'type',
-        url: 'apps/type-vehicle/',
+        url: 'apps/vehicle-type/',
       },
       {
         id: 'fuel',

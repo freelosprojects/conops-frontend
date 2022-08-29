@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { IColor } from '@core/models/color.model';
 import { IResponseList } from '@core/models/response.model';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subject, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ColorService } from '../services/color.service';
@@ -15,12 +16,13 @@ import { ColorService } from '../services/color.service';
 export class ColorListComponent implements OnInit, OnDestroy {
 
   public color: FormControl;
+  public ColumnMode = ColumnMode;
   public selectedOption: FormControl;
 
   public colorList: IResponseList<IColor> = {} as IResponseList<IColor>;
   public itemSelected: IColor | null;
 
-  public colorsubject$: Subject<void> = new Subject();
+  public colorSubject$: Subject<void> = new Subject();
   public subscription$: Subscription = new Subscription();
 
   constructor(private _colorService: ColorService) {
@@ -42,18 +44,18 @@ export class ColorListComponent implements OnInit, OnDestroy {
 
   getColorList(): void {
     this.subscription$.add(
-      this.colorsubject$.pipe(
+      this.colorSubject$.pipe(
         switchMap(() => this._colorService.getColorList())
       ).subscribe(res => this.colorList = res)
     );
-    this.colorsubject$.next();
+    this.colorSubject$.next();
   }
 
   submitForm(): void {
     if (this.colorIsInvalid) return;
 
     this._colorService.createColor({ color: this.color.value }).subscribe({
-      next: () => this.colorsubject$.next()
+      next: () => this.colorSubject$.next()
     });
   }
 

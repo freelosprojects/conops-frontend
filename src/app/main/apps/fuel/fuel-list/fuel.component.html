@@ -1,20 +1,23 @@
+<h1>Tipo de combustible</h1>
+
 <div class="content-wrapper container-xxl p-0" id="license-category">
   <div class="content-body">
-    <!-- <section class="driver-list-wrapper">
-
-    </section> -->
-
     <section id="input-group-basic-merged">
       <div class="row match-height">
         <div class="col-12 col-md-6">
           <div class="card">
             <div class="row">
               <div class="col-md-6 col-12">
-                <div class="d-flex justify-content-between align-items-center m-1">
+                <div
+                  class="d-flex justify-content-between align-items-center m-1"
+                >
                   <div class="d-flex align-items-center">
                     <label class="d-flex align-items-center">
                       Mostrar
-                      <select class="form-control mx-25" [formControl]="selectedOption">
+                      <select
+                        class="form-control mx-25"
+                        [formControl]="selectedOption"
+                      >
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
@@ -27,7 +30,7 @@
             </div>
             <ng-container>
               <ngx-datatable
-                [rows]="licenseCategory.data"
+                [rows]="fuelList.data"
                 [rowHeight]="50"
                 class="bootstrap core-bootstrap"
                 [headerHeight]="50"
@@ -37,30 +40,38 @@
                 [limit]="selectedOption.value"
               >
                 <ngx-datatable-column name="#">
-                  <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex">
+                  <ng-template
+                    ngx-datatable-cell-template
+                    let-rowIndex="rowIndex"
+                  >
                     <a class="font-weight-bold">#{{ rowIndex + 1 }}</a>
                   </ng-template>
                 </ngx-datatable-column>
 
                 <ngx-datatable-column
-                  name="Categoria de brevete"
-                  prop="licenseCategory"
+                  name="Marca"
+                  prop="fuelType"
                 ></ngx-datatable-column>
 
                 <ngx-datatable-column name="Acciones" [sortable]="false">
                   <ng-template ngx-datatable-cell-template let-row="row">
                     <div class="d-flex align-items-center col-actions">
-                      <a class="mr-1" container="body" placement="top" ngbTooltip="Editar" (click)="edit(row)"
-                        ><i size="18" data-feather="edit"></i>
-                      </a>
-                      <!-- <a
+                      <a
                         class="mr-1"
                         container="body"
                         placement="top"
-                        ngbTooltip="Eliminar"
-                        (click)="deleteDriver(row.idDriver)"
-                        ><i size="18" data-feather="trash"></i>
-                      </a> -->
+                        ngbTooltip="Editar"
+                        (click)="edit(row)"
+                        ><i size="18" data-feather="edit"></i>
+                      </a>
+                      <!-- <a
+                          class="mr-1"
+                          container="body"
+                          placement="top"
+                          ngbTooltip="Eliminar"
+                          (click)="deleteDriver(row.idDriver)"
+                          ><i size="18" data-feather="trash"></i>
+                        </a> -->
                     </div>
                   </ng-template>
                 </ngx-datatable-column>
@@ -78,29 +89,31 @@
               <form>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="license">Categoría de brevete</label>
+                    <label for="license">Tipo de combustible</label>
                     <input
                       type="text"
                       id="license"
                       class="form-control"
-                      [class.is-valid]="licenseIsValid"
-                      [class.is-invalid]="licenseIsInvalid"
-                      [formControl]="license"
+                      [class.is-valid]="fuelIsValid"
+                      [class.is-invalid]="fuelIsInvalid"
+                      [formControl]="fuel"
                     />
-                    <span class="invalid-form" *ngIf="licenseIsInvalid">
-                      <small class="form-text text-danger">La categoría es requerida.</small>
+                    <span class="invalid-form" *ngIf="fuelIsInvalid">
+                      <small class="form-text text-danger"
+                        >El tipo de combustible es requerido.</small
+                      >
                     </span>
                   </div>
                 </div>
                 <div class="col-md-12 text-right">
                   <button
                     class="btn btn-primary"
-                    [disabled]="license.invalid"
+                    [disabled]="fuel.invalid"
                     type="button"
                     (click)="submitForm()"
                     rippleEffect
                   >
-                    {{ itemSelected ? 'Editar' : 'Añadir' }} Categoría de brevete
+                    {{ itemSelected ? "Editar" : "Añadir" }} tipo de combustible
                   </button>
                 </div>
               </form>
