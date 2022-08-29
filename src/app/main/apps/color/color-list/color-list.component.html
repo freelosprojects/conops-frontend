@@ -41,7 +41,7 @@
                   </ngx-datatable-column>
   
                   <ngx-datatable-column
-                    name="Categoria de brevete"
+                    name="Color"
                     prop="color"
                   ></ngx-datatable-column>
   
@@ -76,7 +76,7 @@
                 <form>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="license">Categoría de brevete</label>
+                      <label for="license">Color</label>
                       <input
                         type="text"
                         id="license"
@@ -86,7 +86,7 @@
                         [formControl]="color"
                       />
                       <span class="invalid-form" *ngIf="colorIsInvalid">
-                        <small class="form-text text-danger">La categoría es requerida.</small>
+                        <small class="form-text text-danger">El color es requerido.</small>
                       </span>
                     </div>
                   </div>
@@ -98,7 +98,7 @@
                       (click)="submitForm()"
                       rippleEffect
                     >
-                      {{ itemSelected ? 'Editar' : 'Añadir' }} Categoría de brevete
+                      {{ itemSelected ? 'Editar' : 'Añadir' }} Color
                     </button>
                   </div>
                 </form>

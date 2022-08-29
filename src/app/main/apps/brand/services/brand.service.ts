@@ -20,12 +20,12 @@ export class BrandService {
     return this._httpClient.get<IResponseList<IBrandResponse>>(this._url).pipe(
       map(response => ({
         count: response.count,
-        data: response.data.map(color => brandAdapter(color))
+        data: response.data.map(brand => brandAdapter(brand))
       }))
     );
   }
 
-  createColor(brand: IBrandPost): Observable<IResponsePost> {
+  createBrand(brand: IBrandPost): Observable<IResponsePost> {
     return this._httpClient.post<IResponsePost>(this._url, brand);
   }
 }

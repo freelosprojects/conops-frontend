@@ -62,6 +62,10 @@ const routes: Routes = [
     path: 'brand',
     loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule)
   },
+  {
+    path: 'vehicle-model',
+    loadChildren: () => import('./vehicle-model/vehicle-model.module').then(m => m.VehicleModelModule)
+  },
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);

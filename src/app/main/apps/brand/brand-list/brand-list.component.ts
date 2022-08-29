@@ -30,11 +30,11 @@ export class BrandListComponent implements OnInit, OnDestroy {
     this.selectedOption = new FormControl(5);
   }
 
-  get colorIsValid(): boolean {
+  get brandIsValid(): boolean {
     return !this.brand.invalid && this.brand.touched;
   }
 
-  get colorIsInvalid(): boolean {
+  get brandIsInvalid(): boolean {
     return this.brand.invalid && this.brand.touched;
   }
 
@@ -52,9 +52,9 @@ export class BrandListComponent implements OnInit, OnDestroy {
   }
 
   submitForm(): void {
-    if (this.colorIsInvalid) return;
+    if (this.brandIsInvalid) return;
 
-    this._brandService.createColor({ marca: this.brand.value }).subscribe({
+    this._brandService.createBrand({ marca: this.brand.value }).subscribe({
       next: () => this.brandSubject$.next()
     });
   }

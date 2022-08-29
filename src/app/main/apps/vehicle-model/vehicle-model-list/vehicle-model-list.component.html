@@ -1,4 +1,4 @@
-<h1>Marca list works!</h1>
+<h1>Modelos de vehículos</h1>
 
 <div class="content-wrapper container-xxl p-0" id="license-category">
   <div class="content-body">
@@ -30,7 +30,7 @@
             </div>
             <ng-container>
               <ngx-datatable
-                [rows]="brandList.data"
+                [rows]="modelList.data"
                 [rowHeight]="50"
                 class="bootstrap core-bootstrap"
                 [headerHeight]="50"
@@ -49,8 +49,8 @@
                 </ngx-datatable-column>
 
                 <ngx-datatable-column
-                  name="Marca"
-                  prop="brand"
+                  name="Modelo"
+                  prop="model"
                 ></ngx-datatable-column>
 
                 <ngx-datatable-column name="Acciones" [sortable]="false">
@@ -89,18 +89,18 @@
               <form>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="license">Marca</label>
+                    <label for="license">Modelo de vehículo</label>
                     <input
                       type="text"
                       id="license"
                       class="form-control"
-                      [class.is-valid]="brandIsValid"
-                      [class.is-invalid]="brandIsInvalid"
-                      [formControl]="brand"
+                      [class.is-valid]="modelIsValid"
+                      [class.is-invalid]="modelIsInvalid"
+                      [formControl]="model"
                     />
-                    <span class="invalid-form" *ngIf="brandIsInvalid">
+                    <span class="invalid-form" *ngIf="modelIsInvalid">
                       <small class="form-text text-danger"
-                        >La marca es requerida.</small
+                        >La categoría es requerida.</small
                       >
                     </span>
                   </div>
@@ -108,12 +108,12 @@
                 <div class="col-md-12 text-right">
                   <button
                     class="btn btn-primary"
-                    [disabled]="brand.invalid"
+                    [disabled]="model.invalid"
                     type="button"
                     (click)="submitForm()"
                     rippleEffect
                   >
-                    {{ itemSelected ? "Editar" : "Añadir" }} Marca
+                    {{ itemSelected ? "Editar" : "Añadir" }} Modelo
                   </button>
                 </div>
               </form>

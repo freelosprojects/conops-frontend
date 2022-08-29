@@ -154,7 +154,7 @@ export const menu: CoreMenu[] = [
         title: 'Modelos',
         type: 'item',
         icon: 'box',
-        url: 'apps/model/'
+        url: 'apps/vehicle-model/'
       },
       {
         id: 'type-vehicle',
