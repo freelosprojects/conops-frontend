@@ -10,4 +10,6 @@ export const EndpointsRoutes = {
   fuelType: `${urlLocal}/tipos-combustible`,
   typeVehicles: `${urlLocal}/tipos-vehiculo`,
   licenseCategory: `${urlLocal}/brevete-categoria`,
+  areas: `${urlLocal}/areas`,
+  trip: `${urlLocal}/viajes`,
 } as const;

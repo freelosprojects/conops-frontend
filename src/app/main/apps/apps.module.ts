@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'license-category',
     loadChildren: () => import('./license-category/license-category.module').then((m) => m.LicenseCategoryModule),
   },
+  {
+    path: 'trip',
+    loadChildren: () => import('./trip/trip.module').then((m) => m.TripModule),
+  },
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);
