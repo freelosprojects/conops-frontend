@@ -1,4 +1,4 @@
-<h1>Tipo de vehículo</h1>
+<h1>Tipo de combustible</h1>
 
 <div class="content-wrapper container-xxl p-0" id="license-category">
   <div class="content-body">
@@ -30,7 +30,7 @@
             </div>
             <ng-container>
               <ngx-datatable
-                [rows]="vehicleTypeList.data"
+                [rows]="fuelList.data"
                 [rowHeight]="50"
                 class="bootstrap core-bootstrap"
                 [headerHeight]="50"
@@ -50,7 +50,7 @@
 
                 <ngx-datatable-column
                   name="Marca"
-                  prop="vehicleType"
+                  prop="fuelType"
                 ></ngx-datatable-column>
 
                 <ngx-datatable-column name="Acciones" [sortable]="false">
@@ -89,18 +89,18 @@
               <form>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="license">Tipo de vehículo</label>
+                    <label for="license">Tipo de combustible</label>
                     <input
                       type="text"
                       id="license"
                       class="form-control"
-                      [class.is-valid]="vehicleTypeIsValid"
-                      [class.is-invalid]="vehicleTypeIsInvalid"
-                      [formControl]="vehicleType"
+                      [class.is-valid]="fuelIsValid"
+                      [class.is-invalid]="fuelIsInvalid"
+                      [formControl]="fuel"
                     />
-                    <span class="invalid-form" *ngIf="vehicleTypeIsInvalid">
+                    <span class="invalid-form" *ngIf="fuelIsInvalid">
                       <small class="form-text text-danger"
-                        >El tipo de vehículo es requerido.</small
+                        >El tipo de combustible es requerido.</small
                       >
                     </span>
                   </div>
@@ -108,12 +108,12 @@
                 <div class="col-md-12 text-right">
                   <button
                     class="btn btn-primary"
-                    [disabled]="vehicleType.invalid"
+                    [disabled]="fuel.invalid"
                     type="button"
                     (click)="submitForm()"
                     rippleEffect
                   >
-                    {{ itemSelected ? "Editar" : "Añadir" }} tipo de vehículo
+                    {{ itemSelected ? "Editar" : "Añadir" }} tipo de combustible
                   </button>
                 </div>
               </form>
