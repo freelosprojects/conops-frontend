@@ -6,6 +6,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { LicenseCategoryComponent } from './license-category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CoreDirectivesModule } from '@core/directives/directives';
+import { HeaderModule } from '../../components/header/header.module';
 
 const routes: Route[] = [
   {
@@ -16,6 +17,13 @@ const routes: Route[] = [
 
 @NgModule({
   declarations: [LicenseCategoryComponent],
-  imports: [CommonModule, NgxDatatableModule, ReactiveFormsModule, RouterModule.forChild(routes), CoreDirectivesModule],
+  imports: [
+    CommonModule,
+    NgxDatatableModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes),
+    CoreDirectivesModule,
+    HeaderModule,
+  ],
 })
 export class LicenseCategoryModule {}

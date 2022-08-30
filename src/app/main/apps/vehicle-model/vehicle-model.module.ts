@@ -6,12 +6,13 @@ import { CoreDirectivesModule } from '@core/directives/directives';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CoreCommonModule } from '@core/common.module';
+import { HeaderModule } from '../../components/header/header.module';
 
 const routes: Routes = [
   {
     path: '',
     component: VehicleModelListComponent,
-  }
+  },
 ];
 
 @NgModule({
@@ -22,7 +23,8 @@ const routes: Routes = [
     NgxDatatableModule,
     ReactiveFormsModule,
     CoreDirectivesModule,
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+    HeaderModule,
+  ],
 })
-export class VehicleModelModule { }
+export class VehicleModelModule {}

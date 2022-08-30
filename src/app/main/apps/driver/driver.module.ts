@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CoreSidebarModule } from '@core/components';
 import { DriverEditComponent } from './driver-edit/driver-edit.component';
+import { HeaderModule } from '../../components/header/header.module';
 
 const routes: Routes = [
   {
@@ -29,10 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    DriverListComponent,
-    DriverEditComponent
-  ],
+  declarations: [DriverListComponent, DriverEditComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -44,7 +42,8 @@ const routes: Routes = [
     CorePipesModule,
     NgbModule,
     NgSelectModule,
-    CoreSidebarModule
+    CoreSidebarModule,
+    HeaderModule,
   ],
 })
-export class DriverModule { }
+export class DriverModule {}

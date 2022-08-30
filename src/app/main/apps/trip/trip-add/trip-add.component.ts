@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@ang
 import { Observable, Subject } from 'rxjs';
 
 import { FlatpickrOptions } from 'ng2-flatpickr';
+import Peru from 'flatpickr/dist/l10n/es';
 
 import { repeaterAnimation } from '@core/animations/core.animation';
 
@@ -26,8 +27,8 @@ export class TripAddComponent implements OnInit {
     altInput: true,
     mode: 'single',
     altInputClass: 'form-control flat-picker flatpickr-input',
-    defaultDate: new Date(),
-    // altFormat: 'Y-n-j',
+    locale: Peru.es,
+    altFormat: 'Y-m-j',
   };
 
   public timeOptions: FlatpickrOptions = {
@@ -98,9 +99,24 @@ export class TripAddComponent implements OnInit {
     this.addItem(true);
   }
 
+  isFieldInvalid(name: string): boolean {
+    console.log(name);
+    const control = this.formTrip.get(name);
+    return control.invalid && control.touched;
+  }
+
+  isFieldWorkerInvalid(index: number, name: string): boolean {
+    const control = this.passangersFieldAsFormArray.at(index).get(name);
+    return control.invalid && control.touched;
+  }
+
   passangerForm(isDisabled = true): FormGroup {
     return this._fb.group({
-      dni: new FormControl(isDisabled ? { value: null, disabled: true } : null, Validators.required),
+      dni: new FormControl(isDisabled ? { value: null, disabled: true } : null, [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(8),
+      ]),
       names: new FormControl({ value: null, disabled: true }, Validators.required),
       idArea: new FormControl(null, Validators.required),
       idWorker: new FormControl(null, Validators.required),
@@ -108,7 +124,14 @@ export class TripAddComponent implements OnInit {
   }
 
   addItem(isDisabled = false): void {
+    this.passangersFieldAsFormArray.controls.forEach((control) => {
+      console.log(control);
+      control.markAllAsTouched();
+      control.updateValueAndValidity();
+    });
+
     if (this.passangersFieldAsFormArray.invalid) return;
+
     this.passangersFieldAsFormArray.push(this.passangerForm(isDisabled));
   }
 
@@ -126,8 +149,21 @@ export class TripAddComponent implements OnInit {
 
   getWorkerByDni(value: string, index: number): void {
     const DNI_LENGTH = 8;
-    console.log({ control: this.passangersFieldAsFormArray.at(index) });
+
     let dni = value.trim();
+
+    const control = this.passangersFieldAsFormArray.at(index);
+    const controlIdworker = control.get('idWorker');
+    const controlIdAreaworker = control.get('idArea');
+    const controlNamesWorker = control.get('names');
+    const controlDniWorker = control.get('dni');
+
+    if (controlDniWorker.invalid && controlIdworker.value) {
+      controlNamesWorker.reset();
+      controlIdworker.reset();
+      controlIdAreaworker.reset();
+    }
+
     if (!dni || dni.length !== DNI_LENGTH) return;
 
     const worker = this._workers.find((worker) => worker.dni === dni);
@@ -137,17 +173,26 @@ export class TripAddComponent implements OnInit {
       return;
     }
 
-    this._workers = this._workers.filter((workerToFilter) => workerToFilter.dni !== worker.dni);
+    const passangers = this.formTrip.get('passangers').value.map((worker) => worker.idWorker);
+
+    if (passangers.includes(worker.idTrabajador)) {
+      console.log(`el pasajero con dni ${dni} ya esta registrado`);
+      return;
+    }
+
+    // this._workers = this._workers.filter((workerToFilter) => workerToFilter.dni !== worker.dni);
 
     const { nombres, apellidos, idTrabajador } = worker;
 
-    this.passangersFieldAsFormArray.at(index).get('names').setValue(`${nombres} ${apellidos}`);
-    this.passangersFieldAsFormArray.at(index).get('idWorker').setValue(idTrabajador);
+    controlNamesWorker.setValue(`${nombres} ${apellidos}`);
+    controlIdworker.setValue(idTrabajador);
 
     console.log({ worker, control: this.passangersFieldAsFormArray.at(index) });
   }
 
   sendForm(): void {
+    this.formTrip.markAllAsTouched();
+
     if (this.formTrip.invalid) return;
 
     const {

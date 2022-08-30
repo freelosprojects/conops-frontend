@@ -6,12 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreDirectivesModule } from '@core/directives/directives';
 import { RouterModule, Routes } from '@angular/router';
 import { ColorListComponent } from './color-list/color-list.component';
+import { HeaderModule } from '../../components/header/header.module';
 
 const routes: Routes = [
   {
     path: '',
     component: ColorListComponent,
-  }
+  },
 ];
 
 @NgModule({
@@ -22,7 +23,8 @@ const routes: Routes = [
     NgxDatatableModule,
     ReactiveFormsModule,
     CoreDirectivesModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    HeaderModule,
   ],
 })
-export class ColorModule { }
+export class ColorModule {}

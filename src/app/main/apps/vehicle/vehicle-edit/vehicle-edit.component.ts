@@ -9,11 +9,10 @@ import { VehicleService } from '../services/vehicle.service';
 @Component({
   selector: 'app-vehicle-edit',
   templateUrl: './vehicle-edit.component.html',
-  // styleUrls: ['./vehicle-edit.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['../vehicle-list.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class VehicleEditComponent implements OnInit {
-
   public vehicleForm: FormGroup;
   public title: string = 'Editar';
   public isCreate: boolean = false;
@@ -41,26 +40,14 @@ export class VehicleEditComponent implements OnInit {
   }
 
   initNgSelect(): void {
+    this.subscription$.add(this._selectService.getFuel().subscribe((res) => (this.selectFuel = res)));
+    this.subscription$.add(this._selectService.getType().subscribe((res) => (this.selectType = res)));
+    this.subscription$.add(this._selectService.getBrand().subscribe((res) => (this.selectBrand = res)));
+    this.subscription$.add(this._selectService.getModel().subscribe((res) => (this.selectModel = res)));
+    this.subscription$.add(this._selectService.getColor().subscribe((res) => (this.selectColor = res)));
+    this.subscription$.add(this._selectService.getColor().subscribe((res) => (this.selectColor = res)));
     this.subscription$.add(
-      this._selectService.getFuel().subscribe(res => this.selectFuel = res)
-    );
-    this.subscription$.add(
-      this._selectService.getType().subscribe(res => this.selectType = res),
-    );
-    this.subscription$.add(
-      this._selectService.getBrand().subscribe(res => this.selectBrand = res),
-    );
-    this.subscription$.add(
-      this._selectService.getModel().subscribe(res => this.selectModel = res),
-    );
-    this.subscription$.add(
-      this._selectService.getColor().subscribe(res => this.selectColor = res),
-    );
-    this.subscription$.add(
-      this._selectService.getColor().subscribe(res => this.selectColor = res),
-    );
-    this.subscription$.add(
-      this._selectService.getselectLicenseCategory().subscribe(res => this.selectLicenseCategory = res)
+      this._selectService.getselectLicenseCategory().subscribe((res) => (this.selectLicenseCategory = res))
     );
   }
 
@@ -87,12 +74,10 @@ export class VehicleEditComponent implements OnInit {
         id_color: this.vehicleForm.get('color')?.value.value,
         id_tipo_vehiculo: this.vehicleForm.get('type')?.value.value,
         id_brevete_categoria: this.vehicleForm.get('license')?.value.value,
-        id_tipo_combustible: this.vehicleForm.get('fuel')?.value.value
+        id_tipo_combustible: this.vehicleForm.get('fuel')?.value.value,
       };
 
-      this.subscription$.add(
-        this._vehicleService.createVehicle(vehicle).subscribe(res => console.log(res))
-      );
+      this.subscription$.add(this._vehicleService.createVehicle(vehicle).subscribe((res) => console.log(res)));
 
       // if (this.isCreate) {
       // this.subscription$.add(

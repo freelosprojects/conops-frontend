@@ -10,6 +10,7 @@ import { CoreDirectivesModule } from '@core/directives/directives';
 
 import { TripListComponent } from './trip-list.component';
 import { DayJsPipe } from '../pipes/date.pipe';
+import { HeaderModule } from '../../../components/header/header.module';
 
 const routes: Route[] = [{ path: '', component: TripListComponent }];
 
@@ -22,6 +23,7 @@ const routes: Route[] = [{ path: '', component: TripListComponent }];
     NgbModule,
     CoreDirectivesModule,
     ReactiveFormsModule,
+    HeaderModule,
   ],
 })
 export class TripListModule {}

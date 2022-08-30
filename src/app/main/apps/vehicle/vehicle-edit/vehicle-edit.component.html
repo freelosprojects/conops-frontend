@@ -1,16 +1,10 @@
-<h1>{{ title }} Cliente</h1>
-
 <div class="content-wrapper container-xxl p-0">
+  <app-header name="{{ title }} vehículo"></app-header>
   <div class="content-body">
     <section class="app-user-edit">
       <div class="card">
         <div class="card-body">
-          <div
-            class="tab-pane active"
-            id="account"
-            aria-labelledby="account-tab"
-            role="tabpanel"
-          >
+          <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
             <form [formGroup]="vehicleForm">
               <div class="row">
                 <div class="col-md-4">
@@ -40,36 +34,21 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="brand">Marca</label>
-                    <ng-select
-                      id="brand"
-                      placeholder="Seleccione marca"
-                      [items]="selectBrand"
-                      formControlName="brand"
-                    >
+                    <ng-select id="brand" placeholder="Seleccione marca" [items]="selectBrand" formControlName="brand">
                     </ng-select>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="model">Modelo</label>
-                    <ng-select
-                      id="model"
-                      placeholder="Seleccione modelo"
-                      [items]="selectModel"
-                      formControlName="model"
-                    >
+                    <ng-select id="model" placeholder="Seleccione modelo" [items]="selectModel" formControlName="model">
                     </ng-select>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="color">Color</label>
-                    <ng-select
-                      id="color"
-                      placeholder="Seleccione color"
-                      [items]="selectColor"
-                      formControlName="color"
-                    >
+                    <ng-select id="color" placeholder="Seleccione color" [items]="selectColor" formControlName="color">
                     </ng-select>
                   </div>
                 </div>
@@ -99,12 +78,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="type">Tipo</label>
-                    <ng-select
-                      id="type"
-                      placeholder="Seleccione tipo"
-                      [items]="selectType"
-                      formControlName="type"
-                    >
+                    <ng-select id="type" placeholder="Seleccione tipo" [items]="selectType" formControlName="type">
                     </ng-select>
                   </div>
                 </div>

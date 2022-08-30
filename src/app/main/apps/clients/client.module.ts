@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreSidebarModule } from '@core/components';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ClientEditComponent } from './client-edit/client-edit.component';
+import { HeaderModule } from '../../components/header/header.module';
 
 const routes: Routes = [
   {
@@ -29,10 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    ClientListComponent,
-    ClientEditComponent
-  ],
+  declarations: [ClientListComponent, ClientEditComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -44,7 +42,8 @@ const routes: Routes = [
     CorePipesModule,
     NgbModule,
     NgSelectModule,
-    CoreSidebarModule
-  ]
+    CoreSidebarModule,
+    HeaderModule,
+  ],
 })
-export class ClientModule { }
+export class ClientModule {}

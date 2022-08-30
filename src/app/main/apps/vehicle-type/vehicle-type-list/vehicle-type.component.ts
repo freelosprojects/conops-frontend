@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { IResponseList } from '@core/models/response.model';
 import { IVehicleType } from '@core/models/vehicle-type.model';
@@ -10,10 +10,10 @@ import { VehicleTypeService } from '../services/vehicle-type.service';
 @Component({
   selector: 'app-vehicle-type',
   templateUrl: './vehicle-type.component.html',
-  styleUrls: ['../../table-styles/ngx-datatable-style.component.scss']
+  styleUrls: ['../../table-styles/ngx-datatable-style.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class VehicleTypeComponent implements OnInit, OnDestroy {
-
   public vehicleType: FormControl;
   public ColumnMode = ColumnMode;
   public selectedOption: FormControl;
@@ -43,9 +43,9 @@ export class VehicleTypeComponent implements OnInit, OnDestroy {
 
   getVehicleTypeList(): void {
     this.subscription$.add(
-      this.typeSubject$.pipe(
-        switchMap(() => this._vehicleTypeService.getVehicleTypeList())
-      ).subscribe(res => this.vehicleTypeList = res)
+      this.typeSubject$
+        .pipe(switchMap(() => this._vehicleTypeService.getVehicleTypeList()))
+        .subscribe((res) => (this.vehicleTypeList = res))
     );
     this.typeSubject$.next();
   }
@@ -54,7 +54,7 @@ export class VehicleTypeComponent implements OnInit, OnDestroy {
     if (this.vehicleTypeIsInvalid) return;
 
     this._vehicleTypeService.createVehicleType({ tipo_vehiculo: this.vehicleType.value }).subscribe({
-      next: () => this.typeSubject$.next()
+      next: () => this.typeSubject$.next(),
     });
   }
 

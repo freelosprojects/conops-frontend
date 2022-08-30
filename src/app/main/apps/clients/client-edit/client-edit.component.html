@@ -1,6 +1,5 @@
-<h1>{{ title }} Cliente</h1>
-
 <div class="content-wrapper container-xxl p-0">
+  <app-header name="{{ title }} Cliente"></app-header>
   <div class="content-body">
     <section class="app-user-edit">
       <div class="card">
@@ -8,17 +7,8 @@
           <ul ngbNav #nav="ngbNav" class="nav nav-pills">
             <li ngbNavItem>
               <ng-template ngbNavContent>
-                <div
-                  class="tab-pane active"
-                  id="account"
-                  aria-labelledby="account-tab"
-                  role="tabpanel"
-                >
-                  <form
-                    class="form-validate"
-                    (ngSubmit)="(accountForm.form.valid)"
-                    #accountForm="ngForm"
-                  >
+                <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
+                  <form class="form-validate" (ngSubmit)="(accountForm.form.valid)" #accountForm="ngForm">
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -30,20 +20,12 @@
                             placeholder="RUC"
                             name="ruc"
                             [(ngModel)]="client.ruc"
-                            [class.error]="
-                              accountForm.submitted && RucRef.invalid
-                            "
+                            [class.error]="accountForm.submitted && RucRef.invalid"
                             #RucRef="ngModel"
                             required
                           />
-                          <span
-                            *ngIf="accountForm.submitted && RucRef.invalid"
-                            class="invalid-form"
-                          >
-                            <small
-                              class="form-text text-danger"
-                              *ngIf="RucRef.errors.required"
-                            >
+                          <span *ngIf="accountForm.submitted && RucRef.invalid" class="invalid-form">
+                            <small class="form-text text-danger" *ngIf="RucRef.errors.required">
                               This field is required!
                             </small>
                           </span>
@@ -59,19 +41,12 @@
                             placeholder="Nombre"
                             name="name"
                             [(ngModel)]="client.name"
-                            [class.error]="
-                              accountForm.submitted && NameRef.invalid
-                            "
+                            [class.error]="accountForm.submitted && NameRef.invalid"
                             #NameRef="ngModel"
                             required
                           />
-                          <span
-                            *ngIf="accountForm.submitted && NameRef.invalid"
-                            class="invalid-form"
-                          >
-                            <small
-                              class="form-text text-danger"
-                              *ngIf="NameRef.errors.required"
+                          <span *ngIf="accountForm.submitted && NameRef.invalid" class="invalid-form">
+                            <small class="form-text text-danger" *ngIf="NameRef.errors.required"
                               >This field is required!</small
                             >
                           </span>
@@ -87,19 +62,12 @@
                             placeholder="Razón social"
                             name="businessName"
                             [(ngModel)]="client.businessName"
-                            [class.error]="
-                              accountForm.submitted && BusinessNameRef.invalid
-                            "
+                            [class.error]="accountForm.submitted && BusinessNameRef.invalid"
                             #BusinessNameRef="ngModel"
                             required
                           />
-                          <span
-                            *ngIf="accountForm.submitted && BusinessNameRef.invalid"
-                            class="invalid-form"
-                          >
-                            <small
-                              class="form-text text-danger"
-                              *ngIf="BusinessNameRef.errors.required"
+                          <span *ngIf="accountForm.submitted && BusinessNameRef.invalid" class="invalid-form">
+                            <small class="form-text text-danger" *ngIf="BusinessNameRef.errors.required"
                               >This field is required!</small
                             >
                           </span>

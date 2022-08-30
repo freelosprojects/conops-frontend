@@ -8,6 +8,7 @@ import { CoreCommonModule } from '@core/common.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
+import { HeaderModule } from '../../components/header/header.module';
 
 const routes: Routes = [
   {
@@ -25,10 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    VehicleListComponent,
-    VehicleEditComponent
-  ],
+  declarations: [VehicleListComponent, VehicleEditComponent],
   imports: [
     CommonModule,
     NgSelectModule,
@@ -36,7 +34,8 @@ const routes: Routes = [
     NgxDatatableModule,
     ReactiveFormsModule,
     CoreDirectivesModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    HeaderModule,
   ],
 })
-export class VehicleModule { }
+export class VehicleModule {}

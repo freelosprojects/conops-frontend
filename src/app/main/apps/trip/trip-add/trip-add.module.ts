@@ -14,25 +14,22 @@ import { CorePipesModule } from '../../../../../@core/pipes/pipes.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreSidebarModule } from '../../../../../@core/components/core-sidebar/core-sidebar.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InputValidPipe } from '../pipes/input-valid.pipe';
+import { HeaderModule } from '../../../components/header/header.module';
 
 const routes: Route[] = [{ path: '', component: TripAddComponent }];
 
 @NgModule({
-  declarations: [TripAddComponent],
+  declarations: [TripAddComponent, InputValidPipe],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     Ng2FlatpickrModule,
     ReactiveFormsModule,
-    // CoreCommonModule,
     CoreDirectivesModule,
-    // Ng2FlatpickrModule,
-    // NgxDatatableModule,
-    // FormsModule,
-    // CorePipesModule,
     NgbModule,
     NgSelectModule,
-    // CoreSidebarModule,
+    HeaderModule,
   ],
 })
 export class TripAddModule {}
