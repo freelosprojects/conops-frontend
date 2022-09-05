@@ -37,7 +37,6 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
     FaqModule,
     AccountSettingsModule
   ],
-
   providers: []
 })
 export class PagesModule {}

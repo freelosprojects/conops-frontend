@@ -7,6 +7,8 @@ import { CoreDirectivesModule } from '@core/directives/directives';
 import { RouterModule, Routes } from '@angular/router';
 import { ColorListComponent } from './color-list/color-list.component';
 import { HeaderModule } from '../../components/header/header.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'app/auth/helpers/token.interceptor';
 
 const routes: Routes = [
   {
@@ -26,5 +28,12 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HeaderModule,
   ],
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // }
+  ]
 })
 export class ColorModule {}

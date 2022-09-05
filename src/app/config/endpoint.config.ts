@@ -12,5 +12,6 @@ export const EndpointsRoutes = {
   licenseCategory: `${urlLocal}/brevete-categoria`,
   areas: `${urlLocal}/areas`,
   trip: `${urlLocal}/viajes`,
+  auth: `${urlLocal}/ingresar`,
   passangers: `${urlLocal}/pasajeros`,
 } as const;

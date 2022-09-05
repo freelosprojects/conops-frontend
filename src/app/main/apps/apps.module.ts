@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -7,6 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import { TokenInterceptor } from 'app/auth/helpers/token.interceptor';
 
 // routing
 const routes: Routes = [
@@ -85,5 +87,12 @@ FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, i
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)],
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: TokenInterceptor,
+  //     multi: true
+  //   }
+  // ]
 })
 export class AppsModule {}
