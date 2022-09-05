@@ -78,22 +78,14 @@ export const menu: CoreMenu[] = [
   {
     id: 'driver-management',
     type: 'section',
-    title: 'Gestión de vehículos',
+    title: 'Gestión de conductores',
     children: [
       {
         id: 'driver',
         title: 'Conductores',
-        type: 'collapsible',
+        type: 'item',
         icon: 'user',
-        children: [
-          {
-            id: 'driverList',
-            title: 'Lista',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/driver/driver-list',
-          },
-        ],
+        url: 'apps/driver/driver-list'
       },
     ],
   },
@@ -106,17 +98,9 @@ export const menu: CoreMenu[] = [
       {
         id: 'client',
         title: 'Clientes',
-        type: 'collapsible',
+        type: 'item',
         icon: 'user',
-        children: [
-          {
-            id: 'clientList',
-            title: 'Lista',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/client/client-list',
-          },
-        ],
+        url: 'apps/client/client-list',
       },
     ],
   },
@@ -125,7 +109,7 @@ export const menu: CoreMenu[] = [
   {
     id: 'vehicle-management',
     type: 'section',
-    title: 'Gestión de vehículos',
+    title: 'Configuración',
     children: [
       {
         id: 'vehicle',

@@ -10,7 +10,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const user = this._authenticationService.currentUserValue;
-    const isLogged = user && user.token;
+    const isLogged = user;
 
     if (!isLogged) return next.handle(req);
 

@@ -26,7 +26,6 @@ export class VehicleListComponent implements OnInit, OnDestroy {
   getVehicleList(): void {
     this.subscription$.add(
       this._vehicleService.getVehicleList().subscribe(vehicleData => {
-        console.log(vehicleData.data);
         this.rows = vehicleData.data;
       })
     );

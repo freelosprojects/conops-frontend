@@ -20,14 +20,12 @@ export class ClientListComponent implements OnInit, OnDestroy {
   constructor(private _clientService: ClientService) { }
 
   ngOnInit(): void {
-    // this.createPostData();
     this.getClientList();
   }
 
   getClientList(): void {
     this.subscription$.add(
       this._clientService.getClientList().subscribe(dataClient => {
-        console.log(dataClient);
         this.rows = dataClient.data;
       })
     );
@@ -36,23 +34,6 @@ export class ClientListComponent implements OnInit, OnDestroy {
   deleteClient(idClient: number): void {
     this.subscription$.add(
       this._clientService.deleteClient(idClient).subscribe(res => console.log(res))
-    );
-  }
-
-  createPostData(): void {
-    const vehicles = {
-      placa: 'A35579',
-      pasajeros: 20,
-      id_marca: 2,
-      id_modelo: 2,
-      id_color: 2,
-      id_tipo_vehiculo: 1,
-      id_brevete_categoria: 1,
-      id_tipo_combustible: 2
-    }
-
-    this.subscription$.add(
-      this._clientService.createPostData(vehicles).subscribe(res => console.log(res))
     );
   }
 

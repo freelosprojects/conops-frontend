@@ -7,6 +7,6 @@ export class User {
   firstName: string;
   lastName: string;
   avatar: string;
-  role: Role;
+  role: string;
   token?: string;
 }
