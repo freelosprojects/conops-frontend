@@ -1,0 +1,44 @@
+<app-trip-list
+  [data]="tripList$ | async"
+  [nameButton]="'Programar viaje'"
+  [nameList]="'Viajes programados'"
+  [linkButton]="'/apps/trip/trip-scheduled/form'"
+  [actions]="actions"
+></app-trip-list>
+
+<ng-template #modalTemplateRef let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Iniciar viaje</h5>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    <form [formGroup]="formScheduled">
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="startHour">Hora de inicio</label>
+            <ng2-flatpickr
+              formControlName="startHour"
+              [config]="timeOptions"
+              id="startHour"
+              [class.is-invalid]="isFieldInvalid('startHour')"
+            ></ng2-flatpickr>
+            <div *ngIf="isFieldInvalid('startHour')" class="invalid-feedback">La hora de inicio es requerida.</div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="basicInput">KM de inicio</label>
+            <input formControlName="startKm" type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="startTrip()" rippleEffect>Iniciar</button>
+  </div>
+</ng-template>

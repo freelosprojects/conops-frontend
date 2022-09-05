@@ -1,0 +1,17 @@
+@import '@core/scss/angular/libs/flatpickr.component.scss';
+@import '@core/scss/angular/libs/select.component.scss';
+
+.custom-switch-viaje {
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+  gap: 1rem;
+
+  .custom-control {
+    width: 42px;
+  }
+
+  p {
+    margin: 0;
+  }
+}

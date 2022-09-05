@@ -27,7 +27,7 @@
         <ngx-datatable
           [rows]="rows"
           [rowHeight]="50"
-          class="material"
+          class="bootstrap core-bootstrap"
           [limit]="selectedOption"
           [columnMode]="ColumnMode.force"
           [headerHeight]="50"
@@ -44,7 +44,7 @@
             <ng-template let-row="row" let-brand="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span class="font-weight-bold d-block text-nowrap font-medium-1">{{ brand.marca }}</span>
+                  <span>{{ brand.marca }}</span>
                 </div>
               </div>
             </ng-template>
@@ -53,7 +53,7 @@
             <ng-template let-row="row" let-model="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span class="font-weight-bold d-block text-nowrap font-medium-1">{{ model.modelo }}</span>
+                  <span>{{ model.modelo }}</span>
                 </div>
               </div>
             </ng-template>
@@ -62,7 +62,7 @@
             <ng-template let-row="row" let-color="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span class="font-weight-bold d-block text-nowrap font-medium-1">{{ color.color }}</span>
+                  <span>{{ color.color }}</span>
                 </div>
               </div>
             </ng-template>
@@ -72,9 +72,7 @@
             <ng-template let-row="row" let-vehicleType="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span class="font-weight-bold d-block text-nowrap font-medium-1">{{
-                    vehicleType.tipo_vehiculo
-                  }}</span>
+                  <span>{{ vehicleType.tipo_vehiculo }}</span>
                 </div>
               </div>
             </ng-template>
@@ -83,9 +81,7 @@
             <ng-template let-row="row" let-licenseCategory="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span class="font-weight-bold d-block text-nowrap font-medium-1">{{
-                    licenseCategory.breveteCategory
-                  }}</span>
+                  <span>{{ licenseCategory.breveteCategory }}</span>
                 </div>
               </div>
             </ng-template>
@@ -94,14 +90,12 @@
             <ng-template let-row="row" let-fuelType="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span class="font-weight-bold d-block text-nowrap font-medium-1">{{
-                    fuelType.tipo_combustible
-                  }}</span>
+                  <span>{{ fuelType.tipo_combustible }}</span>
                 </div>
               </div>
             </ng-template>
           </ngx-datatable-column>
-          <ngx-datatable-column name="Acciones" [sortable]="false" [frozenRight]="true">
+          <ngx-datatable-column name="Acciones" [sortable]="false">
             <ng-template ngx-datatable-cell-template let-row="row">
               <div class="d-flex align-items-center col-actions">
                 <a

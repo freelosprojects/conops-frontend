@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -9,25 +8,10 @@ import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.mo
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 
 import { ToastsComponent } from 'app/main/components/toasts/toasts.component';
-import { ToastContainerComponent } from 'app/main/components/toasts/toast-container/toast-container.component';
-
-const routes: Routes = [
-  {
-    path: 'toasts',
-    component: ToastsComponent,
-    data: { animation: 'toasts' }
-  }
-];
 
 @NgModule({
-  declarations: [ToastsComponent, ToastContainerComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    CoreCommonModule,
-    NgbModule,
-    ContentHeaderModule,
-    CardSnippetModule
-  ]
+  declarations: [ToastsComponent],
+  imports: [CommonModule, CoreCommonModule, NgbModule, ContentHeaderModule, CardSnippetModule],
+  exports: [ToastsComponent],
 })
 export class ToastsModule {}

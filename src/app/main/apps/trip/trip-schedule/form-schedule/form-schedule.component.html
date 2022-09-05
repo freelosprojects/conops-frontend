@@ -1,0 +1,147 @@
+<div class="content-wrapper container-xxl p-0">
+  <app-header name="Programar viaje"></app-header>
+  <div class="content-body">
+    <section class="row">
+      <div class="col-12">
+        <form [formGroup]="formSchedule">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="yesno">Fecha</label>
+                        <ng2-flatpickr
+                          [config]="dateOptions"
+                          formControlName="date"
+                          name="Date"
+                          [class.is-invalid]="isFieldInvalid('date')"
+                        ></ng2-flatpickr>
+                        <div *ngIf="isFieldInvalid('date')" class="invalid-feedback">La fecha es requerida.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="client">Cliente</label>
+                        <ng-select
+                          [items]="dataForCLientsSelect$ | async"
+                          labelForId="client"
+                          bindLabel="value"
+                          bindValue="id"
+                          formControlName="idClient"
+                          [class.is-invalid]="isFieldInvalid('idClient')"
+                        >
+                        </ng-select>
+                        <div *ngIf="isFieldInvalid('idClient')" class="invalid-feedback">El cliente es requerido.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="driver">Conductor</label>
+                        <ng-select
+                          [items]="dataForDriversSelect$ | async"
+                          labelForId="driver"
+                          bindLabel="value"
+                          bindValue="id"
+                          formControlName="idDriver"
+                          [class.is-invalid]="isFieldInvalid('idDriver')"
+                        >
+                        </ng-select>
+                        <div *ngIf="isFieldInvalid('idDriver')" class="invalid-feedback">
+                          El conductor es requerido.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Tipo de viaje</label>
+                        <div class="custom-switch-viaje">
+                          <p>Ingreso</p>
+                          <div class="custom-control custom-control-primary custom-switch">
+                            <input
+                              formControlName="isTripStart"
+                              type="checkbox"
+                              checked
+                              class="custom-control-input"
+                              id="customSwitch3"
+                            />
+                            <label class="custom-control-label" for="customSwitch3"></label>
+                          </div>
+                          <p>Salida</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="form-row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="vehicle">Vehiculo</label>
+                        <ng-select
+                          [items]="dataForVehicleSelect$ | async"
+                          labelForId="vehicle"
+                          bindLabel="value"
+                          bindValue="id"
+                          formControlName="idVehicle"
+                          [class.is-invalid]="isFieldInvalid('idVehicle')"
+                        >
+                        </ng-select>
+                        <div *ngIf="isFieldInvalid('idVehicle')" class="invalid-feedback">
+                          El vehículo es requerido.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="basicInput">Destino de origen</label>
+                        <input
+                          formControlName="start"
+                          type="text"
+                          class="form-control"
+                          [class.is-invalid]="isFieldInvalid('start')"
+                        />
+                        <div *ngIf="isFieldInvalid('start')" class="invalid-feedback">
+                          El destino de origen es requerido.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="basicInput">Destino de llegada</label>
+                        <input
+                          formControlName="end"
+                          type="text"
+                          class="form-control"
+                          [class.is-invalid]="isFieldInvalid('end')"
+                        />
+                        <div *ngIf="isFieldInvalid('end')" class="invalid-feedback">
+                          El destino de llegada requerido.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                  <button
+                    (click)="sendForm()"
+                    class="btn btn-primary waves-effect waves-float waves-light"
+                    rippleEffect
+                  >
+                    Programar viaje
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

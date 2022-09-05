@@ -50,18 +50,25 @@ export const menu: CoreMenu[] = [
         icon: 'map',
         children: [
           {
-            id: 'tripList',
-            title: 'Lista',
+            id: 'tripSchedule',
+            title: 'Programados',
             type: 'item',
             icon: 'circle',
-            url: 'apps/trip/trip-list',
+            url: 'apps/trip/trip-scheduled',
           },
           {
-            id: 'tripAdd',
-            title: 'Crear',
+            id: 'tripStarted',
+            title: 'Iniciados',
             type: 'item',
             icon: 'circle',
-            url: 'apps/trip/trip-add',
+            url: 'apps/trip/trip-started',
+          },
+          {
+            id: 'tripCompleted',
+            title: 'Finalizados',
+            type: 'item',
+            icon: 'circle',
+            url: 'apps/trip/trip-completed',
           },
         ],
       },
@@ -114,6 +121,7 @@ export const menu: CoreMenu[] = [
     ],
   },
   // Vehicles
+
   {
     id: 'vehicle-management',
     type: 'section',
@@ -122,49 +130,17 @@ export const menu: CoreMenu[] = [
       {
         id: 'vehicle',
         title: 'Vehículos',
-        type: 'collapsible',
+        type: 'item',
         icon: 'shopping-cart',
-        children: [
-          {
-            id: 'vehicleList',
-            title: 'Lista',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/vehicle/vehicle-list',
-          },
-        ],
+        url: 'apps/vehicle/vehicle-list',
       },
-    ],
-  },
-  // License Category
-  {
-    id: 'license-category-management',
-    type: 'section',
-    title: 'Gestión de vehículos',
-    children: [
       {
         id: 'licenseCategory',
         title: 'Categoría Brevete',
-        type: 'collapsible',
+        type: 'item',
         icon: 'shopping-cart',
-        children: [
-          {
-            id: 'vehicleList',
-            title: 'Lista',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/license-category/',
-          },
-        ],
+        url: 'apps/license-category/',
       },
-    ],
-  },
-  // Caracteristicas
-  {
-    id: 'feature-management',
-    type: 'section',
-    title: 'Configuración',
-    children: [
       {
         id: 'colors',
         title: 'Colores',

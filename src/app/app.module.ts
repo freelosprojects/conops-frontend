@@ -30,50 +30,51 @@ import { ContextMenuComponent } from 'app/main/extensions/context-menu/context-m
 import { AnimatedCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/animated-custom-context-menu/animated-custom-context-menu.component';
 import { BasicCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/basic-custom-context-menu/basic-custom-context-menu.component';
 import { SubMenuCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/sub-menu-custom-context-menu/sub-menu-custom-context-menu.component';
+import { ToastsModule } from './main/components/toasts/toasts.module';
 
 const appRoutes: Routes = [
   {
     path: 'dashboard',
-    loadChildren: () => import('./main/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./main/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: 'apps',
-    loadChildren: () => import('./main/apps/apps.module').then(m => m.AppsModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./main/apps/apps.module').then((m) => m.AppsModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'pages',
-    loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule)
+    loadChildren: () => import('./main/pages/pages.module').then((m) => m.PagesModule),
   },
   {
     path: 'ui',
-    loadChildren: () => import('./main/ui/ui.module').then(m => m.UIModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./main/ui/ui.module').then((m) => m.UIModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'components',
-    loadChildren: () => import('./main/components/components.module').then(m => m.ComponentsModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./main/components/components.module').then((m) => m.ComponentsModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'extensions',
-    loadChildren: () => import('./main/extensions/extensions.module').then(m => m.ExtensionsModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./main/extensions/extensions.module').then((m) => m.ExtensionsModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'forms',
-    loadChildren: () => import('./main/forms/forms.module').then(m => m.FormsModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./main/forms/forms.module').then((m) => m.FormsModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'tables',
-    loadChildren: () => import('./main/tables/tables.module').then(m => m.TablesModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./main/tables/tables.module').then((m) => m.TablesModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'charts-and-maps',
-    loadChildren: () => import('./main/charts-and-maps/charts-and-maps.module').then(m => m.ChartsAndMapsModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./main/charts-and-maps/charts-and-maps.module').then((m) => m.ChartsAndMapsModule),
+    canActivate: [AuthGuard],
   },
   // Custom Routes
   // {
@@ -84,12 +85,12 @@ const appRoutes: Routes = [
   {
     path: '',
     redirectTo: '/dashboard/ecommerce',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
-  }
+    redirectTo: '/pages/miscellaneous/error', //Error 404 - Page not found
+  },
 ];
 
 @NgModule({
@@ -98,7 +99,7 @@ const appRoutes: Routes = [
     ContextMenuComponent,
     BasicCustomContextMenuComponent,
     AnimatedCustomContextMenuComponent,
-    SubMenuCustomContextMenuComponent
+    SubMenuCustomContextMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,11 +107,11 @@ const appRoutes: Routes = [
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(FakeDbService, {
       delay: 0,
-      passThruUnknownUrl: true
+      passThruUnknownUrl: true,
     }),
     RouterModule.forRoot(appRoutes, {
       scrollPositionRestoration: 'enabled', // Add options right here
-      relativeLinkResolution: 'legacy'
+      relativeLinkResolution: 'legacy',
     }),
     NgbModule,
     ToastrModule.forRoot(),
@@ -122,7 +123,8 @@ const appRoutes: Routes = [
     CoreThemeCustomizerModule,
     CardSnippetModule,
     LayoutModule,
-    ContentHeaderModule
+    ContentHeaderModule,
+    ToastsModule,
   ],
 
   providers: [
@@ -130,9 +132,9 @@ const appRoutes: Routes = [
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // ! IMPORTANT: Provider used to create fake backend, comment while using real API
-    fakeBackendProvider
+    fakeBackendProvider,
   ],
   entryComponents: [BasicCustomContextMenuComponent, AnimatedCustomContextMenuComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

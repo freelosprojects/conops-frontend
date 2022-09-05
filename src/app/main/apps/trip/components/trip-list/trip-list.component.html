@@ -1,5 +1,5 @@
 <div class="content-wrapper container-xxl p-0">
-  <app-header name="Viajes"></app-header>
+  <app-header [name]="nameList"></app-header>
   <div class="content-body">
     <section class="driver-list-wrapper">
       <div class="card">
@@ -16,15 +16,23 @@
                     <option value="20">20</option>
                   </select>
                 </label>
-                <button class="btn btn-primary ml-2" routerLink="/apps/trip/trip-add" rippleEffect>Añadir viaje</button>
+                <button
+                  *ngIf="nameButton"
+                  class="btn btn-primary ml-2"
+                  [disabled]="!linkButton"
+                  [routerLink]="linkButton"
+                  rippleEffect
+                >
+                  {{ nameButton }}
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        <ng-container *ngIf="tripList$ | async as tripList">
+        <ng-container *ngIf="data">
           <ngx-datatable
-            [rows]="tripList.data"
+            [rows]="data.data"
             [rowHeight]="50"
             class="bootstrap core-bootstrap"
             [limit]="10"
@@ -33,11 +41,6 @@
             [scrollbarH]="true"
             [limit]="selectedOption.value"
           >
-            <ngx-datatable-column name="#" prop="idTrip" [width]="50">
-              <ng-template let-idTrip="value" ngx-datatable-cell-template>
-                <a routerLink="/apps/invoice/preview/{{ idTrip }}" class="font-weight-bold">#{{ idTrip }}</a>
-              </ng-template>
-            </ngx-datatable-column>
             <ngx-datatable-column name="Creado por" prop="createdBy"></ngx-datatable-column>
             <ngx-datatable-column name="Fecha" prop="date">
               <ng-template let-date="value" ngx-datatable-cell-template>
@@ -50,14 +53,14 @@
             <ngx-datatable-column name="Destino" prop="end" [width]="100"></ngx-datatable-column>
             <ngx-datatable-column name="Hora incio" prop="startHour">
               <ng-template let-startHour="value" ngx-datatable-cell-template>
-                <div>
+                <div *ngIf="startHour">
                   {{ startHour | dayJs: 'hour' }}
                 </div>
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Hora fin" prop="endHour">
               <ng-template let-endHour="value" ngx-datatable-cell-template>
-                <div>
+                <div *ngIf="endHour">
                   {{ endHour | dayJs: 'hour' }}
                 </div>
               </ng-template>
@@ -83,28 +86,19 @@
                 </div>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Acciones" [sortable]="false">
+            <ngx-datatable-column *ngIf="actions.length > 0" name="Acciones" [sortable]="false">
               <ng-template ngx-datatable-cell-template let-row="row">
                 <div class="d-flex align-items-center col-actions">
-                  <!-- <a
-                    class="mr-1"
-                    routerLink="/apps/invoice/preview/{{ row.idDriver }}"
-                    container="body"
-                    placement="top"
-                    ngbTooltip="Ver"
-                    ><i size="18" data-feather="eye"></i>
-                  </a> -->
                   <a
+                    *ngFor="let action of actions"
                     class="mr-1"
-                    routerLink="/apps/trip/trip-add/{{ row.idTrip }}"
+                    [routerLink]="action.routerLink"
                     container="body"
                     placement="top"
-                    ngbTooltip="Editar"
-                    ><i size="18" data-feather="edit"></i>
+                    [ngbTooltip]="action.actionName"
+                    (click)="action.action(row)"
+                    ><i size="18" [data-feather]="action.icon"></i>
                   </a>
-                  <!-- <a class="mr-1" container="body" placement="top" ngbTooltip="Eliminar"
-                    ><i size="18" data-feather="trash"></i>
-                  </a> -->
                 </div>
               </ng-template>
             </ngx-datatable-column>

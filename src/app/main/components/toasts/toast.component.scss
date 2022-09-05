@@ -1,0 +1,22 @@
+:host {
+  position: fixed;
+  bottom: 60px;
+  right: 0;
+  margin: 0.5em;
+  z-index: 1200;
+
+  .toast {
+    min-width: 300px;
+    background-color: #fff;
+
+    ::ng-deep {
+      .success {
+        color: #28c76f;
+      }
+
+      .error {
+        color: #ea5455;
+      }
+    }
+  }
+}

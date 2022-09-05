@@ -9,6 +9,13 @@ export interface IClientResponse {
   razon_social: string;
 }
 
+export interface IClientTrip {
+  idCliente: number;
+  ruc: string;
+  nombre: string;
+  razonSocial: string;
+}
+
 export interface IClientResponseForWorkers extends IClientResponse {
   trabajadores: IWorkerResponse[];
 }
@@ -29,7 +36,6 @@ export interface IClient {
   ruc: string;
   nombre: string;
   razonSocial: string;
-  trabajadores: IWorker[];
 }
 
 export interface IWorker {
@@ -39,11 +45,14 @@ export interface IWorker {
   apellidos: string;
 }
 
-export const ITripState = [0, 1, 2] as const;
+export const TripState = ['0', '1', '2'] as const;
 
-export interface IWorkerPost {
-  id_trabajador: number;
-  id_area: number;
+export type ITripState = typeof TripState[number];
+
+export enum EnumTripState {
+  'SCHEDULE' = '0',
+  'STARTED' = '1',
+  'COMPLETED' = '2',
 }
 
 export interface ITripPost {
@@ -58,9 +67,67 @@ export interface ITripPost {
   hora_inicio: string;
   hora_fin: string;
   salida: boolean;
-  estado: typeof ITripState[number];
+  estado: typeof TripState[number];
   creado_por: string;
-  viajes_detalle: IWorkerPost[];
+  viajes_detalle: IDetailTrip[];
+}
+
+export interface ITripSchedulePost {
+  fecha: string;
+  id_conductor: number;
+  id_cliente: number;
+  id_vehiculo: number;
+  origen: string;
+  destino: string;
+  salida: boolean;
+  estado: typeof TripState[number];
+  creado_por: string;
+}
+
+export interface IStartTripPut {
+  id_viaje_cabecera: number;
+  hora_inicio: string;
+  km_inicio: number;
+}
+
+export interface ICompleteTripPut {
+  id_viaje_cabecera: number;
+  hora_fin: string;
+  km_fin: number;
+}
+
+export interface IAreaTrip {
+  idArea: number;
+  area: string;
+}
+
+export interface IAreaTripResponse {
+  id_area: number;
+  area: string;
+}
+
+type ITripDetaiPassangersResponse = IPassangerTripResponse & { id_viaje_detalle: number; area: IAreaTripResponse };
+
+export type ITripDetailPassangers = {
+  idViajeDetalle: number;
+  area: IAreaTrip;
+  pasajero: IPassanger;
+};
+
+export interface ITripDetailResponse {
+  id_viaje_cabecera: number;
+  cliente: IClientResponse;
+  vehiculo: {
+    pasajeros: number;
+  };
+  viajes_detalle?: ITripDetaiPassangersResponse[];
+}
+
+export interface ITripDetail {
+  idViajeCabecera: number;
+  cliente: IClient;
+  maxPasajeros: number;
+  viajesDetalle?: ITripDetailPassangers[];
 }
 
 export interface ITripResponse {
@@ -92,7 +159,7 @@ export interface IVehicleResponse {
 }
 
 export interface ITrip {
-  client: string;
+  client: IClientTrip;
   driver: IDriver;
   createdBy: string;
   end: string;
@@ -106,7 +173,6 @@ export interface ITrip {
   startKm: number;
   isTripStart: boolean;
   vehicle: IVehicle;
-  // viajes_detalle: [{…}]
 }
 
 export interface IDriver {
@@ -117,4 +183,46 @@ export interface IDriver {
 export interface IVehicle {
   placa: string;
   pasajeros: number;
+}
+
+export interface IPassangerTripResponse {
+  pasajero: {
+    id_pasajero: number;
+    dni: string;
+    nombres: string;
+    apellidos: string;
+  };
+}
+
+export interface IPassangerTrip {
+  pasajero: IPassanger;
+}
+
+export interface IPassanger {
+  idPasajero: number;
+  dni: string;
+  nombres: string;
+  apellidos: string;
+}
+
+export interface IPassangerGrid {
+  idPassanger: number;
+  names: string;
+  area: string;
+  dni: string;
+}
+
+export interface IPassangerToAdd {
+  id_viaje: number;
+  viaje_detalle: IDetailTrip;
+}
+
+export interface IDetailTrip {
+  id_pasajero: number;
+  id_area: number;
+}
+
+export interface IPassangerPut {
+  id_viaje_detalle: number;
+  id_area: number;
 }
