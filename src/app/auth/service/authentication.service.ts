@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 import { User, Role } from 'app/auth/models';
 import { ToastrService } from 'ngx-toastr';
+import { EndpointsRoutes } from 'app/config/endpoint.config';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -13,6 +14,7 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
 
   //private
+  private readonly url: string = EndpointsRoutes.auth;
   private currentUserSubject: BehaviorSubject<User>;
 
   /**
@@ -47,30 +49,30 @@ export class AuthenticationService {
   /**
    * User login
    *
-   * @param email
-   * @param password
+   * @param correo
+   * @param clave
    * @returns user
    */
-  login(email: string, password: string) {
+  login(correo: string, clave: string) {
     return this._http
-      .post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
+      .post<any>(`${this.url}`, { correo, clave })
       .pipe(
         map(user => {
           // login successful if there's a jwt token in the response
-          if (user && user.token) {
+          if (user) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('currentUser', JSON.stringify(user.token));
 
             // Display welcome toast!
-            setTimeout(() => {
-              this._toastrService.success(
-                'You have successfully logged in as an ' +
-                  user.role +
-                  ' user to jamp. Now you can start to explore. Enjoy! 🎉',
-                '👋 Welcome, ' + user.firstName + '!',
-                { toastClass: 'toast ngx-toastr', closeButton: true }
-              );
-            }, 2500);
+            // setTimeout(() => {
+            //   this._toastrService.success(
+            //     'You have successfully logged in as an ' +
+            //       user.role +
+            //       ' user to jamp. Now you can start to explore. Enjoy! 🎉',
+            //     '👋 Welcome, ' + user.firstName + '!',
+            //     { toastClass: 'toast ngx-toastr', closeButton: true }
+            //   );
+            // }, 2500);
 
             // notify
             this.currentUserSubject.next(user);
