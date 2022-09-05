@@ -1,4 +1,6 @@
-const urlLocal = 'http://localhost:3000/api';
+import { environment } from 'environments/environment';
+
+const urlLocal = environment.apiUrl;
 
 export const EndpointsRoutes = {
   brand: `${urlLocal}/marcas`,
