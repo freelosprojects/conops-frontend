@@ -1,6 +1,6 @@
 import { environment } from 'environments/environment';
 
-const urlLocal = environment.apiUrl;
+const urlLocal = `${environment.apiUrl}/api`;
 
 export const EndpointsRoutes = {
   brand: `${urlLocal}/marcas`,
