@@ -133,6 +133,21 @@ export const menu: CoreMenu[] = [
       },
     ],
   },
+
+  {
+    id: 'area-management',
+    type: 'section',
+    title: 'Gestión de areas',
+    children: [
+      {
+        id: 'area',
+        title: 'Areas',
+        type: 'item',
+        icon: 'briefcase',
+        url: 'apps/area/area-list',
+      },
+    ],
+  },
   // Vehicles
 
   {
