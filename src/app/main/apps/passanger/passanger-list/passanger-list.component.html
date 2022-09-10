@@ -1,5 +1,5 @@
 <div class="content-wrapper container-xxl p-0" id="license-category">
-  <app-header name="Colores"></app-header>
+  <app-header name="Pasajeros"></app-header>
   <div class="content-body">
     <section id="input-group-basic-merged">
       <div class="row match-height">
@@ -89,11 +89,11 @@
                       type="text"
                       id="nombres"
                       class="form-control"
-                      [class.is-invalid]="dniIsInvalid"
+                      [class.is-invalid]="firstNameIsInvalid"
                       formControlName="firstName"
                     />
-                    <span class="invalid-form" *ngIf="dniIsInvalid">
-                      <small class="form-text text-danger">El dni es requerido.</small>
+                    <span class="invalid-form" *ngIf="firstNameIsInvalid">
+                      <small class="form-text text-danger">Los nombres son requeridos.</small>
                     </span>
                   </div>
                 </div>
@@ -105,11 +105,11 @@
                       type="text"
                       id="license"
                       class="form-control"
-                      [class.is-invalid]="dniIsInvalid"
+                      [class.is-invalid]="lastNameIsInvalid"
                       formControlName="lastName"
                     />
-                    <span class="invalid-form" *ngIf="dniIsInvalid">
-                      <small class="form-text text-danger">El dni es requerido.</small>
+                    <span class="invalid-form" *ngIf="lastNameIsInvalid">
+                      <small class="form-text text-danger">Los apellidos son requeridos.</small>
                     </span>
                   </div>
                 </div>
@@ -134,5 +134,8 @@
 </div>
 
 <ng-template #added>
-  <p>Se agrego el pasajero</p>
+  <p>{{ message }}</p>
+</ng-template>
+<ng-template #error>
+  <p>No se pudo agregar el pasajero</p>
 </ng-template>

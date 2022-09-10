@@ -4,6 +4,8 @@ export interface IPostPassanger {
   apellidos: string;
 }
 
+export interface IPutPassanger extends IPostPassanger {}
+
 export interface IPassangerResponse {
   id_pasajero: number;
   dni: string;

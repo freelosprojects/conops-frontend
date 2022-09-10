@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { IResponseList, IResponsePost } from '@core/models/response.model';
 import { EndpointsRoutes } from 'app/config/endpoint.config';
 import { Observable } from 'rxjs';
-import { IPassangerResponse, IPostPassanger, IPassanger } from '../models/passanger.model';
 import { map } from 'rxjs/operators';
 import { passangerAdapter } from '../adapters/passanger.adapter';
+import { IPassanger, IPassangerResponse, IPostPassanger, IPutPassanger } from '../models/passanger.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +24,9 @@ export class PassangerService {
 
   postPassanger(passanger: IPostPassanger): Observable<IResponsePost> {
     return this._http.post<IResponsePost>(`${EndpointsRoutes.passangers}`, passanger);
+  }
+
+  putPassanger(passanger: IPutPassanger): Observable<IResponsePost> {
+    return this._http.put<IResponsePost>(`${EndpointsRoutes.passangers}/${passanger.dni}`, passanger);
   }
 }
