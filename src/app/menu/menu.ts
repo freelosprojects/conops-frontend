@@ -37,7 +37,21 @@ export const menu: CoreMenu[] = [
   //     },
   //   ],
   // },
-  // Trip Management
+  // Trip Management  // passangers
+  {
+    id: 'roles-management',
+    type: 'collapsible',
+    title: 'Gestión administrativa',
+    children: [
+      {
+        id: 'rol-admin',
+        title: 'Roles',
+        type: 'item',
+        icon: 'eye',
+        url: 'admin/roles',
+      },
+    ],
+  },
   {
     id: 'trip-management',
     type: 'section',

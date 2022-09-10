@@ -35,6 +35,10 @@ import { ToastsModule } from './main/components/toasts/toasts.module';
 
 const appRoutes: Routes = [
   {
+    path: 'admin',
+    loadChildren: () => import('./main/apps/admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
     path: 'dashboard',
     loadChildren: () => import('./main/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
