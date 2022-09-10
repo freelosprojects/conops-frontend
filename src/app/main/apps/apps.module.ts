@@ -45,6 +45,10 @@ const routes: Routes = [
     loadChildren: () => import('./driver/driver.module').then((m) => m.DriverModule),
   },
   {
+    path: 'passanger',
+    loadChildren: () => import('./passanger/passanger.module').then((m) => m.PasssangerModule),
+  },
+  {
     path: 'client',
     loadChildren: () => import('./clients/client.module').then((m) => m.ClientModule),
   },
@@ -66,19 +70,19 @@ const routes: Routes = [
   },
   {
     path: 'brand',
-    loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule)
+    loadChildren: () => import('./brand/brand.module').then((m) => m.BrandModule),
   },
   {
     path: 'vehicle-model',
-    loadChildren: () => import('./vehicle-model/vehicle-model.module').then(m => m.VehicleModelModule)
+    loadChildren: () => import('./vehicle-model/vehicle-model.module').then((m) => m.VehicleModelModule),
   },
   {
     path: 'vehicle-type',
-    loadChildren: () => import('./vehicle-type/vehicle-type.module').then(m => m.VehicleTypeModule)
+    loadChildren: () => import('./vehicle-type/vehicle-type.module').then((m) => m.VehicleTypeModule),
   },
   {
     path: 'fuel',
-    loadChildren: () => import('./fuel/fuel.module').then(m => m.FuelModule)
+    loadChildren: () => import('./fuel/fuel.module').then((m) => m.FuelModule),
   },
 ];
 

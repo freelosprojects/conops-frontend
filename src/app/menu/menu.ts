@@ -85,7 +85,22 @@ export const menu: CoreMenu[] = [
         title: 'Conductores',
         type: 'item',
         icon: 'user',
-        url: 'apps/driver/driver-list'
+        url: 'apps/driver/driver-list',
+      },
+    ],
+  },
+  // passangers
+  {
+    id: 'passanger-management',
+    type: 'section',
+    title: 'Gestión de pasajeros',
+    children: [
+      {
+        id: 'passanger',
+        title: 'Pasajeros',
+        type: 'item',
+        icon: 'user',
+        url: 'apps/passanger/passanger-list',
       },
     ],
   },
