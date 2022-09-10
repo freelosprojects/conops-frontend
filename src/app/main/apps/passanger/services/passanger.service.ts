@@ -29,4 +29,8 @@ export class PassangerService {
   putPassanger(passanger: IPutPassanger): Observable<IResponsePost> {
     return this._http.put<IResponsePost>(`${EndpointsRoutes.passangers}/${passanger.dni}`, passanger);
   }
+
+  deletePassanger(dni: string): Observable<IResponsePost> {
+    return this._http.delete<IResponsePost>(`${EndpointsRoutes.passangers}/${dni}`);
+  }
 }

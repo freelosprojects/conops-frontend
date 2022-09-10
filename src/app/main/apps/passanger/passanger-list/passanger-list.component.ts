@@ -124,4 +124,17 @@ export class PassangerListComponent implements OnInit {
       lastName: passanger.lastName,
     });
   }
+
+  deleteDriver(dni: string): void {
+    this._passangerService.deletePassanger(dni).subscribe({
+      next: (response) => {
+        this.message = response.message;
+        this.passangerSelected = null;
+        this.formPasajero.reset();
+        this._toastService.showSuccess(this.added, 'Operación correcta');
+        this._changeList$.next();
+      },
+      error: () => this._toastService.showError(this.error, 'Ocurrio un problema'),
+    });
+  }
 }
