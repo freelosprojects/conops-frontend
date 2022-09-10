@@ -33,12 +33,6 @@
                 [columnMode]="ColumnMode.force"
                 [limit]="selectedOption.value"
               >
-                <ngx-datatable-column name="#">
-                  <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex">
-                    <a class="font-weight-bold">#{{ rowIndex + 1 }}</a>
-                  </ng-template>
-                </ngx-datatable-column>
-
                 <ngx-datatable-column name="Marca" prop="fuelType"></ngx-datatable-column>
 
                 <ngx-datatable-column name="Acciones" [sortable]="false">
@@ -47,14 +41,14 @@
                       <a class="mr-1" container="body" placement="top" ngbTooltip="Editar" (click)="edit(row)"
                         ><i size="18" data-feather="edit"></i>
                       </a>
-                      <!-- <a
-                          class="mr-1"
-                          container="body"
-                          placement="top"
-                          ngbTooltip="Eliminar"
-                          (click)="deleteDriver(row.idDriver)"
-                          ><i size="18" data-feather="trash"></i>
-                        </a> -->
+                      <a
+                        class="mr-1"
+                        container="body"
+                        placement="top"
+                        ngbTooltip="Eliminar"
+                        (click)="delete(row.idFuelType)"
+                        ><i size="18" data-feather="trash"></i>
+                      </a>
                     </div>
                   </ng-template>
                 </ngx-datatable-column>
@@ -94,7 +88,7 @@
                     (click)="submitForm()"
                     rippleEffect
                   >
-                    {{ itemSelected ? 'Editar' : 'Añadir' }} tipo de combustible
+                    {{ fuelSelected ? 'Editar' : 'Añadir' }} tipo de combustible
                   </button>
                 </div>
               </form>
@@ -105,3 +99,7 @@
     </section>
   </div>
 </div>
+
+<ng-template #toast>
+  <p>{{ message }}</p>
+</ng-template>

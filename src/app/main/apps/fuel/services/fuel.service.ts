@@ -8,24 +8,31 @@ import { map } from 'rxjs/operators';
 import { fuelAdapter } from '../adapters/fuel.adapter';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FuelService {
-
   private readonly _url = EndpointsRoutes.fuelType;
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) {}
 
   getFuelTypes(): Observable<IResponseList<IFuel>> {
     return this._httpClient.get<IResponseList<IFuelResponse>>(this._url).pipe(
-      map(response => ({
+      map((response) => ({
         count: response.count,
-        data: response.data.map(fuel => fuelAdapter(fuel))
+        data: response.data.map((fuel) => fuelAdapter(fuel)),
       }))
     );
   }
 
   createType(brand: IFuelPost): Observable<IResponsePost> {
     return this._httpClient.post<IResponsePost>(this._url, brand);
+  }
+
+  putType(fuelPost: IFuelPost, id: number): Observable<IResponsePost> {
+    return this._httpClient.put<IResponsePost>(`${this._url}/${id}`, fuelPost);
+  }
+
+  deleteType(id: number): Observable<IResponsePost> {
+    return this._httpClient.delete<IResponsePost>(`${this._url}/${id}`);
   }
 }

@@ -8,24 +8,31 @@ import { map } from 'rxjs/operators';
 import { VehicleTypeAdapter } from '../adapters/vehicle-type.adapter';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VehicleTypeService {
-
   private readonly _url = EndpointsRoutes.typeVehicles;
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) {}
 
   getVehicleTypeList(): Observable<IResponseList<IVehicleType>> {
     return this._httpClient.get<IResponseList<IVehicleTypeResponse>>(this._url).pipe(
-      map(response => ({
+      map((response) => ({
         count: response.count,
-        data: response.data.map(vehicleType => VehicleTypeAdapter(vehicleType))
+        data: response.data.map((vehicleType) => VehicleTypeAdapter(vehicleType)),
       }))
     );
   }
 
   createVehicleType(vehicleType: IVehicleTypePost): Observable<IResponsePost> {
     return this._httpClient.post<IResponsePost>(this._url, vehicleType);
+  }
+
+  putVehicleType(fuelPost: IVehicleTypePost, id: number): Observable<IResponsePost> {
+    return this._httpClient.put<IResponsePost>(`${this._url}/${id}`, fuelPost);
+  }
+
+  deleteVehicleType(id: number): Observable<IResponsePost> {
+    return this._httpClient.delete<IResponsePost>(`${this._url}/${id}`);
   }
 }

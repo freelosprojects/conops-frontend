@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { IResponseList } from '@core/models/response.model';
 import { IVehicleType } from '@core/models/vehicle-type.model';
@@ -6,6 +6,7 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subject, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { VehicleTypeService } from '../services/vehicle-type.service';
+import { ToastService } from 'app/main/components/toasts/toasts.service';
 
 @Component({
   selector: 'app-vehicle-type',
@@ -24,7 +25,11 @@ export class VehicleTypeComponent implements OnInit, OnDestroy {
   public typeSubject$: Subject<void> = new Subject();
   public subscription$: Subscription = new Subscription();
 
-  constructor(private _vehicleTypeService: VehicleTypeService) {
+  message: string;
+
+  @ViewChild('toast') toast: TemplateRef<any> | null;
+
+  constructor(private _vehicleTypeService: VehicleTypeService, private _toastService: ToastService) {
     this.vehicleType = new FormControl(null, Validators.required);
     this.selectedOption = new FormControl(5);
   }
@@ -41,6 +46,10 @@ export class VehicleTypeComponent implements OnInit, OnDestroy {
     this.getVehicleTypeList();
   }
 
+  ngOnDestroy(): void {
+    this.subscription$.unsubscribe();
+  }
+
   getVehicleTypeList(): void {
     this.subscription$.add(
       this.typeSubject$
@@ -53,9 +62,37 @@ export class VehicleTypeComponent implements OnInit, OnDestroy {
   submitForm(): void {
     if (this.vehicleTypeIsInvalid) return;
 
-    this._vehicleTypeService.createVehicleType({ tipo_vehiculo: this.vehicleType.value }).subscribe({
-      next: () => this.typeSubject$.next(),
-    });
+    if (!this.itemSelected) {
+      this._vehicleTypeService.createVehicleType({ tipo_vehiculo: this.vehicleType.value }).subscribe({
+        next: (response) => {
+          this.message = response.message;
+          this.itemSelected = null;
+          this.vehicleType.reset();
+          this._toastService.showSuccess(this.toast, 'Operación exitosa');
+          this.typeSubject$.next();
+        },
+        error: (response) => {
+          this.message = response.error.message;
+          this._toastService.showError(this.toast, 'Ocurrio un problema');
+        },
+      });
+    } else {
+      this._vehicleTypeService
+        .putVehicleType({ tipo_vehiculo: this.vehicleType.value }, this.itemSelected.idVehicleType)
+        .subscribe({
+          next: (response) => {
+            this.message = response.message;
+            this.itemSelected = null;
+            this.vehicleType.reset();
+            this._toastService.showSuccess(this.toast, 'Operación exitosa');
+            this.typeSubject$.next();
+          },
+          error: (response) => {
+            this.message = response.error.message;
+            this._toastService.showError(this.toast, 'Ocurrio un problema');
+          },
+        });
+    }
   }
 
   edit(item: IVehicleType) {
@@ -63,7 +100,18 @@ export class VehicleTypeComponent implements OnInit, OnDestroy {
     this.vehicleType.setValue(item.vehicleType);
   }
 
-  ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+  delete(id: number) {
+    this._vehicleTypeService.deleteVehicleType(id).subscribe({
+      next: (response) => {
+        this.message = response.message;
+        this.itemSelected = null;
+        this._toastService.showSuccess(this.toast, 'Operación exitosa');
+        this.typeSubject$.next();
+      },
+      error: (response) => {
+        this.message = response.error.message;
+        this._toastService.showError(this.toast, 'Ocurrio un problema');
+      },
+    });
   }
 }
