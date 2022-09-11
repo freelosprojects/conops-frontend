@@ -7,6 +7,7 @@ import { IBrand, IColor, IFuelType, IModel, IVehicleType } from 'app/main/apps/m
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EndpointsRoutes } from '../endpoint.config';
+import { IRoleResponse } from '../../main/apps/admin/models/rol.model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,12 @@ export class NgSelectService {
   getselectLicenseCategory(): Observable<INgSelect[]> {
     return this._httpClient.get<IResponseList<ILicenseCategoryResponse>>(EndpointsRoutes.licenseCategory).pipe(
       map(res => res.data.map(data => this.transformToNgSelect(data.id_breveteCategory, data.breveteCategory)))
+    );
+  }
+
+  getSelectRoles(): Observable<INgSelect[]> {
+    return this._httpClient.get<IResponseList<IRoleResponse>>(EndpointsRoutes.roles).pipe(
+      map(res => res.data.map(data => this.transformToNgSelect(data.id_rol, data.rol)))
     );
   }
 

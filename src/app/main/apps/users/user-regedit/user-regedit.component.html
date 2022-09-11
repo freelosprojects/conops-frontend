@@ -1,0 +1,62 @@
+<div class="content-wrapper container-xxl p-0">
+  <app-header name="{{ title }} Cliente"></app-header>
+  <div class="content-body">
+    <section class="app-user-edit">
+      <div class="card">
+        <div class="card-body">
+          <ul ngbNav #nav="ngbNav" class="nav nav-pills">
+            <li ngbNavItem>
+              <ng-template ngbNavContent>
+                <form class="form-validate" [formGroup]="userForm">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" class="form-control" placeholder="Nombre" formControlName="name"
+                          [class.is-invalid]="isNameInvalid" />
+                        <span class="invalid-form" *ngIf="isNameInvalid">
+                          <small class="form-text text-danger">El nombre de usuario es requerido.</small>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="email">Nombre</label>
+                        <input type="text" id="email" class="form-control" placeholder="correo" formControlName="email"
+                          [class.is-invalid]="isEmailInvalid" />
+                        <span class="invalid-form" *ngIf="isEmailInvalid">
+                          <small class="form-text text-danger">El correo es requerido.</small>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="type">Tipo</label>
+                        <ng-select id="type" placeholder="Seleccione rol" [items]="ngSelectRol$ | async" formControlName="role">
+                        </ng-select>
+                      </div>
+                    </div>
+                    <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                      <button type="submit" (click)="submit()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1"
+                        rippleEffect>
+                        Guardar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<ng-template #added>
+  <p>{{ message }}</p>
+</ng-template>
+<ng-template #error>
+  <p>No se pudo eliminar el usuario</p>
+</ng-template>

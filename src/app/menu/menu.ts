@@ -149,12 +149,18 @@ export const menu: CoreMenu[] = [
     ],
   },
   // Vehicles
-
   {
     id: 'vehicle-management',
     type: 'section',
     title: 'Configuración',
     children: [
+      {
+        id: 'users',
+        title: 'Usuarios',
+        type: 'item',
+        icon: 'user',
+        url: 'apps/users/',
+      },
       {
         id: 'vehicle',
         title: 'Vehículos',
