@@ -1,21 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IResponsePost } from '@core/models/response.model';
 import { EndpointsRoutes } from 'app/config/endpoint.config';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Client, ClientAdapter, ClientResponse, IGenericList } from '../../models/adapters/driver.class';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClientService {
-
   private readonly _url = EndpointsRoutes.client;
 
-  constructor(
-    private _httpClient: HttpClient,
-    private _adapter: ClientAdapter
-  ) { }
+  constructor(private _httpClient: HttpClient, private _adapter: ClientAdapter) {}
 
   /**
    * @description GET.
@@ -24,8 +21,8 @@ export class ClientService {
   getClientList(): Observable<IGenericList<Client>> {
     return this._httpClient.get<IGenericList<ClientResponse>>(this._url).pipe(
       map((data) => ({
-        data: data.data.map(resMap => this._adapter.adapt(resMap)),
-        count: data.count
+        data: data.data.map((resMap) => this._adapter.adapt(resMap)),
+        count: data.count,
       }))
     );
   }
@@ -36,17 +33,17 @@ export class ClientService {
    * @returns Clients.
    */
   getClientListById(idClient: number): Observable<Client> {
-    return this._httpClient.get<ClientResponse>(`${this._url}/${idClient}`).pipe(
-      map(driver => this._adapter.adapt(driver['cliente']))
-    );
+    return this._httpClient
+      .get<ClientResponse>(`${this._url}/${idClient}`)
+      .pipe(map((driver) => this._adapter.adapt(driver['cliente'])));
   }
 
   /**
    * @description POST - Creates a new customer.
    * @param client
    */
-  createClient(client) {
-    return this._httpClient.post(this._url, client);
+  createClient(client): Observable<IResponsePost> {
+    return this._httpClient.post<IResponsePost>(this._url, client);
   }
 
   /**
@@ -54,16 +51,16 @@ export class ClientService {
    * @param client
    * @param idClient
    */
-  updateClient(client: ClientResponse, idClient: number) {
-    return this._httpClient.put(`${this._url}/${idClient}`, client);
+  updateClient(client: ClientResponse, idClient: number): Observable<IResponsePost> {
+    return this._httpClient.put<IResponsePost>(`${this._url}/${idClient}`, client);
   }
 
   /**
    * @description DELETE - Deletes an existent client.
    * @param idClient
    */
-  deleteClient(idClient: number) {
-    return this._httpClient.delete(`${this._url}/${idClient}`);
+  deleteClient(idClient: number): Observable<IResponsePost> {
+    return this._httpClient.delete<IResponsePost>(`${this._url}/${idClient}`);
   }
 
   createPostData(myObject) {

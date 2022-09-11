@@ -1,50 +1,60 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
-import { Subscription } from 'rxjs';
-import { Client } from '../../models/adapters/driver.class';
+import { ToastService } from 'app/main/components/toasts/toasts.service';
+import { Subscription, Subject, Observable } from 'rxjs';
+import { Client, IGenericList } from '../../models/adapters/driver.class';
 import { ClientService } from '../services/client.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
   styleUrls: ['./client-list.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-export class ClientListComponent implements OnInit, OnDestroy {
-
+export class ClientListComponent implements OnInit, AfterViewInit, OnDestroy {
   public rows: Client[];
   public selectedOption = 5;
   public ColumnMode = ColumnMode;
   public subscription$: Subscription = new Subscription();
+  clients$: Observable<IGenericList<Client>>;
 
-  constructor(private _clientService: ClientService) { }
+  private _changeList$: Subject<void>;
+
+  message: string;
+
+  @ViewChild('toast') toast: TemplateRef<any> | null;
+
+  constructor(private _clientService: ClientService, private _toastService: ToastService) {
+    this._changeList$ = new Subject();
+    this.clients$ = new Observable();
+  }
 
   ngOnInit(): void {
     this.getClientList();
   }
 
+  ngAfterViewInit(): void {
+    this._changeList$.next();
+  }
+
   getClientList(): void {
-    this.subscription$.add(
-      this._clientService.getClientList().subscribe(dataClient => {
-        this.rows = dataClient.data;
-      })
-    );
+    this.clients$ = this._changeList$.pipe(switchMap(() => this._clientService.getClientList()));
   }
 
   deleteClient(idClient: number): void {
     this.subscription$.add(
-      this._clientService.deleteClient(idClient).subscribe(res => console.log(res))
-    );
-  }
-
-  createClient(): void {
-    const client = {
-      ruc: '10724917947',
-      nombre: 'Devonmalone',
-      razon_social: 'Testing'
-    }
-    this.subscription$.add(
-      this._clientService.createClient(client).subscribe(res => console.log(res))
+      this._clientService.deleteClient(idClient).subscribe({
+        next: (response) => {
+          this.message = response.message;
+          this._changeList$.next();
+          this._toastService.showSuccess(this.toast, 'Operación exitosa');
+        },
+        error: (response) => {
+          this.message = response.error.message;
+          this._toastService.showError(this.toast, 'Ocurrio un error');
+        },
+      })
     );
   }
 

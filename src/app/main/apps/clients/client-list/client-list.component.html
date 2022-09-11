@@ -23,71 +23,61 @@
             </div>
           </div>
         </div>
-
-        <ngx-datatable
-          [rows]="rows"
-          [rowHeight]="50"
-          class="bootstrap core-bootstrap"
-          [limit]="selectedOption"
-          [columnMode]="ColumnMode.force"
-          [headerHeight]="50"
-          [footerHeight]="50"
-          [scrollbarH]="true"
-        >
-          <ngx-datatable-column name="#" prop="idClient" [width]="50">
-            <ng-template let-idClient="value" ngx-datatable-cell-template>
-              <a routerLink="/apps/invoice/preview/{{ idClient }}" class="font-weight-bold">#{{ idClient }}</a>
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Ruc" prop="ruc" [width]="100"> </ngx-datatable-column>
-          <ngx-datatable-column name="Nombre" [width]="250">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              <div class="d-flex align-items-center">
-                <div class="cell-line-height">
-                  <span class="font-weight-bold d-block text-nowrap font-medium-1">{{ row.name }}</span>
+        <ng-container *ngIf="clients$ | async as clients">
+          <ngx-datatable
+            [rows]="clients.data"
+            [rowHeight]="50"
+            class="bootstrap core-bootstrap"
+            [limit]="selectedOption"
+            [columnMode]="ColumnMode.force"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Ruc" prop="ruc" [width]="100"> </ngx-datatable-column>
+            <ngx-datatable-column name="Nombre" [width]="250">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <div class="d-flex align-items-center">
+                  <span>{{ row.name }}</span>
                 </div>
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Razón social" prop="businessName" [width]="50">
-            <ng-template let-businessName="value" ngx-datatable-cell-template>
-              <div>
-                {{ businessName }}
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Acciones" [width]="40" [sortable]="false">
-            <ng-template ngx-datatable-cell-template let-row="row">
-              <div class="d-flex align-items-center col-actions">
-                <a
-                  class="mr-1"
-                  routerLink="/apps/invoice/preview/{{ row.idClient }}"
-                  container="body"
-                  placement="top"
-                  ngbTooltip="Ver"
-                  ><i size="18" data-feather="eye"></i>
-                </a>
-                <a
-                  class="mr-1"
-                  routerLink="/apps/client/client-edit/{{ row.idClient }}"
-                  container="body"
-                  placement="top"
-                  ngbTooltip="Editar"
-                  ><i size="18" data-feather="edit"></i>
-                </a>
-                <a
-                  class="mr-1"
-                  container="body"
-                  placement="top"
-                  ngbTooltip="Eliminar"
-                  (click)="deleteClient(row.idClient)"
-                  ><i size="18" data-feather="trash"></i>
-                </a>
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
-        </ngx-datatable>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Razón social" prop="businessName" [width]="50">
+              <ng-template let-businessName="value" ngx-datatable-cell-template>
+                <div>
+                  {{ businessName }}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Acciones" [width]="40" [sortable]="false">
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <div class="d-flex align-items-center col-actions">
+                  <a
+                    class="mr-1"
+                    routerLink="/apps/client/client-edit/{{ row.idClient }}"
+                    container="body"
+                    placement="top"
+                    ngbTooltip="Editar"
+                    ><i size="18" data-feather="edit"></i>
+                  </a>
+                  <a
+                    class="mr-1"
+                    container="body"
+                    placement="top"
+                    ngbTooltip="Eliminar"
+                    (click)="deleteClient(row.idClient)"
+                    ><i size="18" data-feather="trash"></i>
+                  </a>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </ng-container>
       </div>
     </section>
   </div>
 </div>
+
+<ng-template #toast>
+  <p>{{ message }}</p>
+</ng-template>
