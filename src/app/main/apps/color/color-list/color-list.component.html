@@ -47,14 +47,14 @@
                       <a class="mr-1" container="body" placement="top" ngbTooltip="Editar" (click)="edit(row)"
                         ><i size="18" data-feather="edit"></i>
                       </a>
-                      <!-- <a
-                          class="mr-1"
-                          container="body"
-                          placement="top"
-                          ngbTooltip="Eliminar"
-                          (click)="deleteDriver(row.idDriver)"
-                          ><i size="18" data-feather="trash"></i>
-                        </a> -->
+                      <a
+                        class="mr-1"
+                        container="body"
+                        placement="top"
+                        ngbTooltip="Eliminar"
+                        (click)="delete(row.idColor)"
+                        ><i size="18" data-feather="trash"></i>
+                      </a>
                     </div>
                   </ng-template>
                 </ngx-datatable-column>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="card-body">
-              <form>
+              <form id="form-color">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="license">Color</label>
@@ -105,3 +105,7 @@
     </section>
   </div>
 </div>
+
+<ng-template #toast>
+  <p>{{ message }}</p>
+</ng-template>
