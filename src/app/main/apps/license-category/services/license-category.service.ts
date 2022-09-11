@@ -31,4 +31,12 @@ export class LicenseCategoryService {
   postLicenseCategory(license: ILicenseCategoryPost): Observable<IResponsePost> {
     return this._httpClient.post<IResponsePost>(this._url, license);
   }
+
+  putLicenseCategory(license: ILicenseCategoryPost, id: number): Observable<IResponsePost> {
+    return this._httpClient.put<IResponsePost>(`${this._url}/${id}`, license);
+  }
+
+  deleteLicenseCategory(id: number): Observable<IResponsePost> {
+    return this._httpClient.delete<IResponsePost>(`${this._url}/${id}`);
+  }
 }

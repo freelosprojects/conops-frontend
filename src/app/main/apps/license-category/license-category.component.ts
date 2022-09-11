@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
@@ -9,6 +9,7 @@ import { IResponseList } from '@core/models/response.model';
 import { LicenseCategoryService } from './services/license-category.service';
 import { ILicenseCategory } from './models/license-category.model';
 import { ColumnMode } from '@swimlane/ngx-datatable';
+import { ToastService } from 'app/main/components/toasts/toasts.service';
 
 @Component({
   selector: 'app-license-category',
@@ -17,7 +18,6 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
   encapsulation: ViewEncapsulation.None,
 })
 export class LicenseCategoryComponent implements OnInit {
-
   ColumnMode = ColumnMode;
 
   license: FormControl;
@@ -30,7 +30,11 @@ export class LicenseCategoryComponent implements OnInit {
 
   itemSelected: ILicenseCategory | null;
 
-  constructor(private _licenseCategoryService: LicenseCategoryService) {
+  message: string;
+
+  @ViewChild('toast') toast: TemplateRef<any> | null;
+
+  constructor(private _licenseCategoryService: LicenseCategoryService, private _toastService: ToastService) {
     this.license = new FormControl(null, Validators.required);
 
     this.selectedOption = new FormControl(5);
@@ -61,13 +65,48 @@ export class LicenseCategoryComponent implements OnInit {
   submitForm(): void {
     if (this.licenseIsInvalid) return;
 
-    this._licenseCategoryService.postLicenseCategory({ breveteCategory: this.license.value }).subscribe({
-      next: () => this.licenseSubject$.next(),
-    });
+    if (!this.itemSelected) {
+      this._licenseCategoryService.postLicenseCategory({ breveteCategory: this.license.value }).subscribe({
+        next: (response) => {
+          this.message = response.message;
+          this.itemSelected = null;
+          this.license.reset();
+          this._toastService.showSuccess(this.toast, 'Operación exitosa');
+          this.licenseSubject$.next();
+        },
+      });
+    } else {
+      this._licenseCategoryService
+        .putLicenseCategory({ breveteCategory: this.license.value }, this.itemSelected.idLicenseCategory)
+        .subscribe({
+          next: (response) => {
+            this.message = response.message;
+            this.itemSelected = null;
+            this.license.reset();
+            this._toastService.showSuccess(this.toast, 'Operación exitosa');
+            this.licenseSubject$.next();
+          },
+        });
+    }
   }
 
   edit(item: ILicenseCategory) {
     this.itemSelected = item;
     this.license.setValue(item.licenseCategory);
+  }
+
+  delete(id: number) {
+    this._licenseCategoryService.deleteLicenseCategory(id).subscribe({
+      next: (response) => {
+        this.message = response.message;
+        this.itemSelected = null;
+        this._toastService.showSuccess(this.toast, 'Operación exitosa');
+        this.licenseSubject$.next();
+      },
+      error: (response) => {
+        this.message = response.error.message;
+        this._toastService.showError(this.toast, 'Ocurrio un problema');
+      },
+    });
   }
 }
