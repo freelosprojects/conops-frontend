@@ -16,5 +16,6 @@ export const EndpointsRoutes = {
   trip: `${urlLocal}/viajes`,
   auth: `${urlLocal}/auth`,
   passangers: `${urlLocal}/pasajeros`,
+  users: `${urlLocal}/usuarios`,
   roles: `${urlLocal}/roles`,
 } as const;

@@ -88,19 +88,16 @@ const routes: Routes = [
     path: 'fuel',
     loadChildren: () => import('./fuel/fuel.module').then((m) => m.FuelModule),
   },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
+  },
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule.forChild(routes)],
-  // providers: [
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: TokenInterceptor,
-  //     multi: true
-  //   }
-  // ]
+  imports: [CommonModule, RouterModule.forChild(routes)]
 })
 export class AppsModule {}

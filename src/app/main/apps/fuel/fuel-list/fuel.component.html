@@ -38,8 +38,8 @@
                 <ngx-datatable-column name="Acciones" [sortable]="false">
                   <ng-template ngx-datatable-cell-template let-row="row">
                     <div class="d-flex align-items-center col-actions">
-                      <a class="mr-1" container="body" placement="top" ngbTooltip="Editar" (click)="edit(row)"
-                        ><i size="18" data-feather="edit"></i>
+                      <a class="mr-1" container="body" placement="top" ngbTooltip="Editar" (click)="edit(row)">
+                        <i size="18" data-feather="edit"></i>
                       </a>
                       <a
                         class="mr-1"
@@ -67,14 +67,8 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="license">Tipo de combustible</label>
-                    <input
-                      type="text"
-                      id="license"
-                      class="form-control"
-                      [class.is-valid]="fuelIsValid"
-                      [class.is-invalid]="fuelIsInvalid"
-                      [formControl]="fuel"
-                    />
+                    <input type="text" id="license" class="form-control" [class.is-valid]="fuelIsValid"
+                      [class.is-invalid]="fuelIsInvalid" [formControl]="fuel" />
                     <span class="invalid-form" *ngIf="fuelIsInvalid">
                       <small class="form-text text-danger">El tipo de combustible es requerido.</small>
                     </span>

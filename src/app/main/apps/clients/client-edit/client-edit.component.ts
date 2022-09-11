@@ -22,10 +22,10 @@ export class ClientEditComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.getDriverListById();
+    this.getClientListById();
   }
 
-  getDriverListById(): void {
+  getClientListById(): void {
     this.subscription$.add(
       this._route.params.pipe(
         switchMap(params => {
@@ -50,8 +50,6 @@ export class ClientEditComponent implements OnInit, OnDestroy {
         ruc: clientForm.ruc,
         razon_social: clientForm.businessName
       };
-
-      console.log(client);
 
       if (this.isCreate) {
         this.subscription$.add(
