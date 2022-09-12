@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Subscription, Subject } from 'rxjs';
+import { Subscription, Subject, Observable } from 'rxjs';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { IUser } from '@core/models/users.model';
 import { FormControl } from '@angular/forms';
@@ -8,6 +8,8 @@ import { IResponseList } from '@core/models/response.model';
 import { ToastService } from '../../components/toasts/toasts.service';
 import { switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { NgSelectService } from '../../../config/service/ng-select.service';
+import { INgSelect } from '@core/models/ng-select.model';
 
 @Component({
   selector: 'app-users-list',
@@ -29,14 +31,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   public userSelected: IUser;
 
-  public selectRole: any = [
-    { name: 'All', value: '' },
-    { name: 'Admin', value: 'Admin' },
-    { name: 'Author', value: 'Author' },
-    { name: 'Editor', value: 'Editor' },
-    { name: 'Maintainer', value: 'Maintainer' },
-    { name: 'Subscriber', value: 'Subscriber' }
-  ];
+  public selectRole$: Observable<INgSelect[]> = new Observable();
 
   public selectStatus: any = [
     { name: 'All', value: '' },
@@ -50,13 +45,15 @@ export class UsersListComponent implements OnInit, OnDestroy {
   constructor(
     private _router: Router,
     private _userService: UsersService,
-    private _toastService: ToastService
+    private _toastService: ToastService,
+    private _ngSelectService: NgSelectService
   ) {
     this.searchValue = new FormControl('');
     this.selectedRole = new FormControl([]);
     this.selectedOption = new FormControl(10);
     this.selectedStatus = new FormControl([]);
     this._changeList$ = new Subject();
+    this.initNgSelect();
   }
 
   @ViewChild('added') added: TemplateRef<any> | null;
@@ -65,6 +62,10 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getUsers();
+  }
+
+  initNgSelect(): void {
+    this.selectRole$ = this._ngSelectService.getSelectRoles();
   }
 
   getUsers(): void {
