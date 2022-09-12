@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IResponsePost } from '@core/models/response.model';
 import { DriverResponseData } from '@fake-db/invoice.data';
 import { EndpointsRoutes } from 'app/config/endpoint.config';
 import { Observable } from 'rxjs';
@@ -46,8 +47,8 @@ export class DriverService {
    * @description POST - Creates a new driver.
    * @param driver
    */
-  createDriver(driver: DriverResponseData) {
-    return this._httpClient.post(this._url, driver);
+  createDriver(driver: DriverResponseData): Observable<IResponsePost> {
+    return this._httpClient.post<IResponsePost>(this._url, driver);
   }
 
   /**
@@ -55,15 +56,15 @@ export class DriverService {
    * @param driver
    * @param idDriver
    */
-  updateDriver(driver: DriverResponseData, idDriver: number) {
-    return this._httpClient.put(`${this._url}/${idDriver}`, driver);
+  updateDriver(driver: DriverResponseData, idDriver: number): Observable<IResponsePost> {
+    return this._httpClient.put<IResponsePost>(`${this._url}/${idDriver}`, driver);
   }
 
   /**
    * @description DELETE - Deletes an existent driver.
    * @param driver
    */
-  deleteDriver(idDriver: number) {
-    return this._httpClient.delete(`${this._url}/${idDriver}`);
+  deleteDriver(idDriver: number): Observable<IResponsePost> {
+    return this._httpClient.delete<IResponsePost>(`${this._url}/${idDriver}`);
   }
 }
