@@ -72,7 +72,7 @@ export class TripService {
     let httpParams = new HttpParams();
     httpParams = httpParams.set('dni', dni);
     return this._httpClient
-      .get<IPassangerTripResponse>(`${EndpointsRoutes.passangers}`, { params: httpParams })
+      .get<IPassangerTripResponse>(`${EndpointsRoutes.passangers}/by-dni`, { params: httpParams })
       .pipe(map((response) => passangerTripAdapter(response)));
   }
 

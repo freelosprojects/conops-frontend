@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs';
@@ -11,6 +11,7 @@ import { TripService } from '../../services/trip.service';
 import { SelectEntityService } from '../../../../services/select-entity.service';
 import { ITripSchedulePost } from '../../models/trip.model';
 import { Router } from '@angular/router';
+import { ToastService } from 'app/main/components/toasts/toasts.service';
 
 @Component({
   templateUrl: './form-schedule.component.html',
@@ -39,11 +40,16 @@ export class FormScheduleComponent implements OnInit {
   dataForVehicleSelect$: Observable<ISelectEntity[]>;
   dataForAreaSelect$: Observable<ISelectEntity[]>;
 
+  message: string;
+
+  @ViewChild('toast') toast: TemplateRef<any> | null;
+
   constructor(
     private _fb: FormBuilder,
     private _tripService: TripService,
     private _selectEntity: SelectEntityService,
-    private _router: Router
+    private _router: Router,
+    private _toastService: ToastService
   ) {
     this.formSchedule = this._fb.group({
       date: new FormControl(null, Validators.required),
@@ -88,7 +94,13 @@ export class FormScheduleComponent implements OnInit {
 
     this._tripService.scheduleTrip(schedule).subscribe({
       next: (response) => {
+        this.message = response.message;
+        this._toastService.showSuccess(this.toast, 'Operación exitosa');
         this._router.navigateByUrl('/apps/trip/trip-scheduled');
+      },
+      error: (response) => {
+        this.message = response.message;
+        this._toastService.showError(this.toast, 'Ocurrio un problema');
       },
     });
   }

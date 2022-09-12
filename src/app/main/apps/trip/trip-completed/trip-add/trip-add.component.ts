@@ -54,6 +54,8 @@ export class TripAddComponent implements OnInit {
 
   @ViewChild('toastError') toastError: TemplateRef<any>;
 
+  @ViewChild('toastNotFound') toastNotFound: TemplateRef<any>;
+
   private _idTrip: number | null;
 
   private _changeTrip$: Subject<number>;
@@ -116,6 +118,7 @@ export class TripAddComponent implements OnInit {
         switchMap((dni) =>
           this._tripService.getPassangerByDni(dni).pipe(
             catchError((_) => {
+              this._toastService.showError(this.toastNotFound, 'No se pudo agregar');
               this.namesControl.setValue(null);
               this.idPassangerControl.setValue(null);
               return of(null);

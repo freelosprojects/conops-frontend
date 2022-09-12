@@ -12,6 +12,7 @@ import { ITrip, EnumTripState } from '../models/trip.model';
 import { IActionList } from '../components/trip-list/action-list.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
+import { ToastService } from '../../../components/toasts/toasts.service';
 
 @Component({
   selector: 'app-trip-schedule',
@@ -34,13 +35,22 @@ export class TripScheduleComponent implements OnInit, AfterViewInit {
 
   reloadTripList$: Subject<void>;
 
+  message: string;
+
+  @ViewChild('toast') toast: TemplateRef<any> | null;
+
   public timeOptions: FlatpickrOptions = {
     enableTime: true,
     noCalendar: true,
     altInput: true,
   };
 
-  constructor(private _tripService: TripService, private _modalService: NgbModal, private _fb: FormBuilder) {
+  constructor(
+    private _tripService: TripService,
+    private _modalService: NgbModal,
+    private _fb: FormBuilder,
+    private _toastService: ToastService
+  ) {
     this.tripList$ = new Observable();
     this.modalTemplateRef = null;
     this.tripToStart = null;
@@ -99,8 +109,14 @@ export class TripScheduleComponent implements OnInit, AfterViewInit {
       })
       .subscribe({
         next: (response) => {
+          this.message = response.message;
+          this._toastService.showSuccess(this.toast, 'Operación exitosa');
           this.modalRef.close();
           this.reloadTripList$.next();
+        },
+        error: (response) => {
+          this.message = response.message;
+          this._toastService.showError(this.toast, 'Ocurrio un problema');
         },
       });
   }
