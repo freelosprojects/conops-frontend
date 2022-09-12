@@ -7,6 +7,7 @@ import { UsersService } from './services/users.service';
 import { IResponseList } from '@core/models/response.model';
 import { ToastService } from '../../components/toasts/toasts.service';
 import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -47,6 +48,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   private _changeList$: Subject<void>;
 
   constructor(
+    private _router: Router,
     private _userService: UsersService,
     private _toastService: ToastService
   ) {
@@ -90,6 +92,10 @@ export class UsersListComponent implements OnInit, OnDestroy {
       },
       error: () => this._toastService.showError(this.error, 'Ocurrio un problema'),
     });
+  }
+
+  goToAddUser(): void {
+    this._router.navigate(['/', 'apps', 'users', 'regedit']);
   }
 
   ngOnDestroy(): void {

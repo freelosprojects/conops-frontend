@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY, Observable, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { UsersService } from '../services/users.service';
@@ -29,6 +29,7 @@ export class UserRegeditComponent implements OnInit, OnDestroy {
   @ViewChild('error') error: TemplateRef<any> | null;
 
   constructor(
+    private _router: Router,
     private _form: FormBuilder,
     private _route: ActivatedRoute,
     private _userService: UsersService,
@@ -107,6 +108,7 @@ export class UserRegeditComponent implements OnInit, OnDestroy {
             next: (response) => {
               this.message = response.message;
               this._toastService.showSuccess(this.added, 'Operación correcta');
+              this.goToUserList();
             },
             error: () => this._toastService.showError(this.error, 'Ocurrio un problema')
           })
@@ -117,12 +119,17 @@ export class UserRegeditComponent implements OnInit, OnDestroy {
             next: (response) => {
               this.message = response.message;
               this._toastService.showSuccess(this.added, 'Operación correcta');
+              this.goToUserList();
             },
             error: () => this._toastService.showError(this.error, 'Ocurrio un problema')
           })
         );
       }
     }
+  }
+
+  goToUserList(): void {
+    this._router.navigate(['/', 'apps', 'users']);
   }
 
   ngOnDestroy(): void {

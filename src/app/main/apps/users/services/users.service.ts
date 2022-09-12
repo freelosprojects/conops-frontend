@@ -31,11 +31,11 @@ export class UsersService {
   }
 
   createUser(user: IUserPost): Observable<IResponsePost> {
-    return this._httpClient.post<IResponsePost>(`${EndpointsRoutes.users}`, user);
+    return this._httpClient.post<IResponsePost>(`${EndpointsRoutes.auth}/registrar`, user);
   }
 
   updateUser(user: IUserPost, idUser: number): Observable<IResponsePost> {
-    return this._httpClient.put<IResponsePost>(`${EndpointsRoutes.users}/${idUser}`, user);
+    return this._httpClient.put<IResponsePost>(`${this._url}/${idUser}`, user);
   }
 
   deleteUser(idUser: number): Observable<IResponsePost> {

@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IResponseList, IResponsePost } from '@core/models/response.model';
+import { IVehicle, IVehiclePost, IVehicleResponse } from '@core/models/vehicle.model';
 import { EndpointsRoutes } from 'app/config/endpoint.config';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { IGenericList, Vehicle, VehicleAdapter, VehiclePost, VehicleResponse } from '../../models/adapters/driver.class';
+import { map, tap } from 'rxjs/operators';
+import { vehicleAdapter } from '../adapters/vehicle.adapter';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +16,24 @@ export class VehicleService {
 
   constructor(
     private _httpClient: HttpClient,
-    private _adapter: VehicleAdapter
   ) { }
 
   /**
    * @description GET - Get the list of vehicles.
    * @returns listof vehicles
    */
-  getVehicleList(): Observable<IGenericList<Vehicle>> {
-    return this._httpClient.get<IGenericList<VehicleResponse>>(this._url).pipe(
-      map((data) => ({
-        data: data.data.map(resMap => this._adapter.adapt(resMap)),
-        count: data.count
+  getVehicleList(): Observable<IResponseList<IVehicle>> {
+    return this._httpClient.get<IResponseList<IVehicleResponse>>(this._url).pipe(
+      map((response) => ({
+        count: response.count,
+        data: response.data.map(user => vehicleAdapter(user))
       }))
+    );
+  }
+
+  getVehicleByID(idVehicle: number): Observable<IVehicle> {
+    return this._httpClient.get<IVehicleResponse>(`${this._url}/${idVehicle}`).pipe(
+      map((data) => vehicleAdapter(data['vehiculo']))
     );
   }
 
@@ -34,7 +41,15 @@ export class VehicleService {
    * @description POST - Creates a new vehicle.
    * @param vehicle
    */
-   createVehicle(vehicle: VehiclePost) {
-    return this._httpClient.post(this._url, vehicle);
+   createVehicle(vehicle: IVehiclePost): Observable<IResponsePost> {
+    return this._httpClient.post<IResponsePost>(this._url, vehicle);
+  }
+
+  updateVehicle(vehicle: IVehiclePost, idVehicle: number): Observable<IResponsePost> {
+    return this._httpClient.put<IResponsePost>(`${this._url}/${idVehicle}`, vehicle);
+  }
+
+  deleteVehicle(idVehicle: number): Observable<IResponsePost> {
+    return this._httpClient.delete<IResponsePost>(`${this._url}/${idVehicle}`);
   }
 }

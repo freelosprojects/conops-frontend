@@ -15,10 +15,10 @@ const routes: Routes = [
     path: 'vehicle-list',
     component: VehicleListComponent,
   },
-  // {
-  //   path: 'client-edit/:id',
-  //   component: ClientEditComponent,
-  // },
+  {
+    path: 'vehicle-edit/:id',
+    component: VehicleEditComponent,
+  },
   {
     path: 'vehicle-create',
     component: VehicleEditComponent,

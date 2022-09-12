@@ -28,4 +28,12 @@ export class VehicleModelService {
   createModel(model: IModelPost): Observable<IResponsePost> {
     return this._httpClient.post<IResponsePost>(this._url, model);
   }
+
+  updateModel(model: IModelPost, idModel: number): Observable<IResponsePost> {
+    return this._httpClient.put<IResponsePost>(`${this._url}/${idModel}`, model);
+  }
+
+  deleteModel(idModel: number): Observable<IResponsePost> {
+    return this._httpClient.delete<IResponsePost>(`${this._url}/${idModel}`);
+  }
 }

@@ -40,11 +40,11 @@
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column name="Placa" prop="plate"> </ngx-datatable-column>
-          <ngx-datatable-column name="Nombre" prop="brand">
+          <ngx-datatable-column name="Marca" prop="brand">
             <ng-template let-row="row" let-brand="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span>{{ brand.marca }}</span>
+                  <span>{{ brand.brand }}</span>
                 </div>
               </div>
             </ng-template>
@@ -53,7 +53,7 @@
             <ng-template let-row="row" let-model="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span>{{ model.modelo }}</span>
+                  <span>{{ model.model }}</span>
                 </div>
               </div>
             </ng-template>
@@ -72,7 +72,7 @@
             <ng-template let-row="row" let-vehicleType="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span>{{ vehicleType.tipo_vehiculo }}</span>
+                  <span>{{ vehicleType.vehicleType }}</span>
                 </div>
               </div>
             </ng-template>
@@ -81,7 +81,7 @@
             <ng-template let-row="row" let-licenseCategory="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span>{{ licenseCategory.breveteCategory }}</span>
+                  <span>{{ licenseCategory.licenseCategory }}</span>
                 </div>
               </div>
             </ng-template>
@@ -90,7 +90,7 @@
             <ng-template let-row="row" let-fuelType="value" ngx-datatable-cell-template>
               <div class="d-flex align-items-center">
                 <div class="cell-line-height">
-                  <span>{{ fuelType.tipo_combustible }}</span>
+                  <span>{{ fuelType.fuelType }}</span>
                 </div>
               </div>
             </ng-template>
@@ -100,15 +100,7 @@
               <div class="d-flex align-items-center col-actions">
                 <a
                   class="mr-1"
-                  routerLink="/apps/invoice/preview/{{ row.idClient }}"
-                  container="body"
-                  placement="top"
-                  ngbTooltip="Ver"
-                  ><i size="18" data-feather="eye"></i>
-                </a>
-                <a
-                  class="mr-1"
-                  routerLink="/apps/vehicle/vehicle-edit/{{ row.idClient }}"
+                  routerLink="/apps/vehicle/vehicle-edit/{{ row.idVehicle }}"
                   container="body"
                   placement="top"
                   ngbTooltip="Editar"
@@ -119,7 +111,7 @@
                   container="body"
                   placement="top"
                   ngbTooltip="Eliminar"
-                  (click)="deleteClient(row.idClient)"
+                  (click)="deleteClient(row.idVehicle)"
                   ><i size="18" data-feather="trash"></i>
                 </a>
               </div>
@@ -130,3 +122,7 @@
     </section>
   </div>
 </div>
+
+<ng-template #toast>
+  <p>{{ message }}</p>
+</ng-template>

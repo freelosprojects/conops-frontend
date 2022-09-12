@@ -7,6 +7,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CoreDirectivesModule } from '@core/directives/directives';
 import { HeaderModule } from '../../components/header/header.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     CoreDirectivesModule,
     RouterModule.forChild(routes),
-    HeaderModule,
+    HeaderModule
   ],
 })
 export class BrandModule {}

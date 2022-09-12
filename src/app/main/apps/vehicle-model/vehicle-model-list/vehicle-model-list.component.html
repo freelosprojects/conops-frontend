@@ -23,16 +23,9 @@
               </div>
             </div>
             <ng-container>
-              <ngx-datatable
-                [rows]="modelList.data"
-                [rowHeight]="50"
-                class="bootstrap core-bootstrap"
-                [headerHeight]="50"
-                [footerHeight]="50"
-                [scrollbarH]="true"
-                [columnMode]="ColumnMode.force"
-                [limit]="selectedOption.value"
-              >
+              <ngx-datatable [rows]="modelList.data" [rowHeight]="50" class="bootstrap core-bootstrap"
+                [headerHeight]="50" [footerHeight]="50" [scrollbarH]="true" [columnMode]="ColumnMode.force"
+                [limit]="selectedOption.value">
                 <ngx-datatable-column name="#">
                   <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex">
                     <a class="font-weight-bold">#{{ rowIndex + 1 }}</a>
@@ -44,17 +37,17 @@
                 <ngx-datatable-column name="Acciones" [sortable]="false">
                   <ng-template ngx-datatable-cell-template let-row="row">
                     <div class="d-flex align-items-center col-actions">
-                      <a class="mr-1" container="body" placement="top" ngbTooltip="Editar" (click)="edit(row)"
-                        ><i size="18" data-feather="edit"></i>
+                      <a class="mr-1" container="body" placement="top" ngbTooltip="Editar" (click)="edit(row)"><i
+                          size="18" data-feather="edit"></i>
                       </a>
-                      <!-- <a
+                      <a
                           class="mr-1"
                           container="body"
                           placement="top"
                           ngbTooltip="Eliminar"
-                          (click)="deleteDriver(row.idDriver)"
+                          (click)="deleteModel(row.idModel)"
                           ><i size="18" data-feather="trash"></i>
-                        </a> -->
+                        </a>
                     </div>
                   </ng-template>
                 </ngx-datatable-column>
@@ -70,30 +63,30 @@
 
             <div class="card-body">
               <form>
-                <div class="col-md-12">
+                <div class="col-md">
                   <div class="form-group">
                     <label for="license">Modelo de vehículo</label>
-                    <input
-                      type="text"
-                      id="license"
-                      class="form-control"
-                      [class.is-valid]="modelIsValid"
-                      [class.is-invalid]="modelIsInvalid"
-                      [formControl]="model"
-                    />
+                    <input type="text" id="license" class="form-control" [class.is-valid]="modelIsValid"
+                      [class.is-invalid]="modelIsInvalid" [formControl]="model" />
                     <span class="invalid-form" *ngIf="modelIsInvalid">
                       <small class="form-text text-danger">El modelo es requerido.</small>
                     </span>
                   </div>
                 </div>
+                <div class="col-md">
+                  <div class="form-group">
+                    <label for="type">Marca</label>
+                    <ng-select id="type" [class.is-invalid]="brandIsInvalid" placeholder="Seleccione marca"
+                      [items]="ngSelectBrand$ | async" [formControl]="brand">
+                    </ng-select>
+                    <span class="invalid-form" *ngIf="brandIsInvalid">
+                      <small class="form-text text-danger">La marca es requerida.</small>
+                    </span>
+                  </div>
+                </div>
                 <div class="col-md-12 text-right">
-                  <button
-                    class="btn btn-primary"
-                    [disabled]="model.invalid"
-                    type="button"
-                    (click)="submitForm()"
-                    rippleEffect
-                  >
+                  <button class="btn btn-primary" [disabled]="model.invalid" type="button" (click)="submitForm()"
+                    rippleEffect>
                     {{ itemSelected ? 'Editar' : 'Añadir' }} modelo
                   </button>
                 </div>
@@ -105,3 +98,7 @@
     </section>
   </div>
 </div>
+
+<ng-template #toast>
+  <p>{{ message }}</p>
+</ng-template>

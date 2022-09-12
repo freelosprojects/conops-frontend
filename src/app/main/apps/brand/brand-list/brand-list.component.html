@@ -47,14 +47,14 @@
                       <a class="mr-1" container="body" placement="top" ngbTooltip="Editar" (click)="edit(row)"
                         ><i size="18" data-feather="edit"></i>
                       </a>
-                      <!-- <a
+                      <a
                           class="mr-1"
                           container="body"
                           placement="top"
                           ngbTooltip="Eliminar"
-                          (click)="deleteDriver(row.idDriver)"
+                          (click)="deleteBrand(row.idBrand)"
                           ><i size="18" data-feather="trash"></i>
-                        </a> -->
+                        </a>
                     </div>
                   </ng-template>
                 </ngx-datatable-column>
@@ -105,3 +105,8 @@
     </section>
   </div>
 </div>
+
+<ng-template #toast>
+  <p>{{ message }}</p>
+</ng-template>
+

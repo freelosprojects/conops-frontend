@@ -28,4 +28,12 @@ export class BrandService {
   createBrand(brand: IBrandPost): Observable<IResponsePost> {
     return this._httpClient.post<IResponsePost>(this._url, brand);
   }
+
+  updateBrand(brand: IBrandPost, idBrand: number): Observable<IResponsePost> {
+    return this._httpClient.put<IResponsePost>(`${this._url}/${idBrand}`, brand);
+  }
+
+  deleteBrand(idBrand: number): Observable<IResponsePost> {
+    return this._httpClient.delete<IResponsePost>(`${this._url}/${idBrand}`);
+  }
 }

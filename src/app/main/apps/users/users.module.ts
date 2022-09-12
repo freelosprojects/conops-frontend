@@ -25,6 +25,10 @@ const routes: Routes = [
     path: 'regedit/:id',
     component: UserRegeditComponent,
   },
+  {
+    path: 'regedit',
+    component: UserRegeditComponent,
+  },
 ];
 
 @NgModule({
